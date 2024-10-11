@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {   
+    public JoystickMovement joystickMovement;
     private float movementSpeed = 2f;
     private float collisionOffset = 0.02f;
     public ContactFilter2D movementFilter;
@@ -32,8 +33,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-
-        // try alternative axes if movement in a specific direction is blocked
+        // WASD or joystick movement
         if (movementInput != Vector2.zero) {
             bool success = TryMove(movementInput);
             if (!success) {
@@ -44,15 +44,25 @@ public class PlayerController : MonoBehaviour
                 success = TryMove(new Vector2(0, movementInput.y));
             }
             animator.SetBool("IsMoving", success);
+        } else if (joystickMovement.joystickVec.y != 0) {
+            bool success = TryMove(joystickMovement.joystickVec);
+            if (!success) {
+                success = TryMove(new Vector2(joystickMovement.joystickVec.x, 0));
+            }
+
+            if (!success) {
+                success = TryMove(new Vector2(0, joystickMovement.joystickVec.y));
+            }
+            animator.SetBool("IsMoving", success);
         } else {
             animator.SetBool("IsMoving", false);
         }
 
         // set sprite appearance according to movement direction
         // flip right/left
-        if (movementInput.x < 0) {
+        if (movementInput.x < 0 || joystickMovement.joystickVec.x < 0) {
             spriteRenderer.flipX = true;
-        } else if (movementInput.x > 0) {
+        } else if (movementInput.x > 0 || joystickMovement.joystickVec.x > 0) {
             spriteRenderer.flipX = false;
         }
     }
@@ -79,4 +89,5 @@ public class PlayerController : MonoBehaviour
     void OnMove(InputValue movementValue) {
         movementInput = movementValue.Get<Vector2>();
     }
+
 }

@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282482a8f46dc64449679dcfa60f60da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joystickMovement: {fileID: 3920210404862292658, guid: 9c9f02b6d0b642344a499ef0e3b63dba, type: 3}
   movementFilter:
     useTriggers: 0
     useLayerMask: 0
