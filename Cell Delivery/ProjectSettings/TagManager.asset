@@ -7,6 +7,9 @@ TagManager:
   - CarbonDioxide
   - Oxygen
   - Button
+  - Target
+  - Bullet Border
+  - Border
   layers:
   - Default
   - TransparentFX
@@ -16,11 +19,11 @@ TagManager:
   - UI
   - Player
   - Block
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Obstacle
+  - Border
+  - Enemy
+  - Boss
+  - Bullet
   - 
   - 
   - 

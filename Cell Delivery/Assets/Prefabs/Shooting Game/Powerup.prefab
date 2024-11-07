@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6007464180009146574}
   - component: {fileID: 7903023879002376523}
   - component: {fileID: 9054836607718483702}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Powerup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3888898872840678972}
   - component: {fileID: 9052067821014365595}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 5832914696320367136}
   - component: {fileID: 1003013658887322211}
   - component: {fileID: 1083340625827848948}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 6882292355016735016}
   - component: {fileID: 83816626880034785}
   - component: {fileID: 7366784814253148119}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

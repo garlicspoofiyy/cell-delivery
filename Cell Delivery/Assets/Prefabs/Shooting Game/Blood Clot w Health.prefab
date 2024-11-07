@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4638760756930843881}
   - component: {fileID: 8970317877144632348}
   - component: {fileID: 6641064978582495193}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7153076762829531631}
   - component: {fileID: 2884734725211299127}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Blood Clot Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 579235121658567468}
   - component: {fileID: 7151575715649444108}
   - component: {fileID: 5791031162379368105}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Blood Clot w Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 2620037926728837188}
   - component: {fileID: 638672408153674069}
   - component: {fileID: 8789577065352377019}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,7 +404,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7243627490324695973}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Blood Clot
   m_TagString: Bullet Border
   m_Icon: {fileID: 0}
