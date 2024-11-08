@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawnerFightingGame : MonoBehaviour
 {
     public GameObject enemyPrefab;
     

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovementFightingGame : MonoBehaviour
 {
     public float moveSpeed = 3f;
     // Offset for collision detection to avoid clipping
