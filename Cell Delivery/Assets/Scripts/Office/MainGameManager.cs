@@ -43,8 +43,8 @@ public class MainGameManager : MonoBehaviour
     private const int baseBoxesCapacity = 50;
 
     // CURRENT CAPACITY
-    private int maxDropletsCapacity;
-    private int maxBoxesCapacity;
+    public static int maxDropletsCapacity;
+    public static int maxBoxesCapacity;
 
 
     /// 
@@ -60,20 +60,37 @@ public class MainGameManager : MonoBehaviour
     // texts
     public TextMeshProUGUI bodyAge;
 
+    public void updateRemainingRBC() {
+        rbcSlider.maxValue = maxBoxesCapacity;
+        rbcSlider.value = redBloodCellsBoxes;
+    }
+
+
+    public void updateRemainingWBC() {
+        wbcSlider.maxValue = maxBoxesCapacity;
+        wbcSlider.value = whiteBloodCellsBoxes;
+    }
+
+    
+    public void updateRemainingPlatelet() {
+        plateletSlider.maxValue = maxBoxesCapacity;
+        plateletSlider.value = plateletsBoxes;
+    }
+
+    public void updateRemainingDroplet() {
+        dropletSlider.maxValue = maxDropletsCapacity;
+        dropletSlider.value = droplets;
+    }
+
     void Start() {
         // sliders
         dropletSlider.maxValue = maxDropletsCapacity;
         dropletSlider.value = droplets;
-
-        rbcSlider.maxValue = maxBoxesCapacity;
-        rbcSlider.value = redBloodCellsBoxes;
-
-        wbcSlider.maxValue = maxBoxesCapacity;
-        wbcSlider.value = whiteBloodCellsBoxes;
-
-        plateletSlider.maxValue = maxBoxesCapacity;
-        plateletSlider.value = plateletsBoxes;
+        updateRemainingRBC();
+        updateRemainingWBC();
+        updateRemainingPlatelet();
     }
+
 
     void Update() {
         // Decrement the timer only when the game is running
@@ -126,9 +143,8 @@ public class MainGameManager : MonoBehaviour
         PlayerPrefs.SetInt("droplets", droplets);
         PlayerPrefs.SetInt("redBloodCellsBoxes", redBloodCellsBoxes);
         PlayerPrefs.SetInt("whiteBloodCellsBoxes", whiteBloodCellsBoxes);
-        PlayerPrefs.SetInt("plateletsBoxes", plateletsBoxes);
-        PlayerPrefs.SetInt("plateletsBoxes", maxBoxesCapacity);
-        PlayerPrefs.SetInt("plateletsBoxes", maxDropletsCapacity);
+        PlayerPrefs.SetInt("maxBoxesCapacity", maxBoxesCapacity);
+        PlayerPrefs.SetInt("maxDropletsCapacity", maxDropletsCapacity);
 
         // Ensure PlayerPrefs are written to disk
         PlayerPrefs.Save();
@@ -142,10 +158,10 @@ public class MainGameManager : MonoBehaviour
         month = PlayerPrefs.GetInt("month", 0);
         maxBoxesCapacity = PlayerPrefs.GetInt("maxBoxesCapacity", baseBoxesCapacity);
         maxDropletsCapacity = PlayerPrefs.GetInt("maxDropletsCapacity", baseDropletsCapacity);
-        droplets = PlayerPrefs.GetInt("droplets", maxDropletsCapacity);
-        redBloodCellsBoxes = PlayerPrefs.GetInt("redBloodCellsBoxes", maxBoxesCapacity);
-        whiteBloodCellsBoxes = PlayerPrefs.GetInt("whiteBloodCellsBoxes", maxBoxesCapacity);
-        plateletsBoxes = PlayerPrefs.GetInt("plateletsBoxes", maxBoxesCapacity);
+        droplets = PlayerPrefs.GetInt("droplets", maxDropletsCapacity / 2);
+        redBloodCellsBoxes = PlayerPrefs.GetInt("redBloodCellsBoxes", maxBoxesCapacity / 2);
+        whiteBloodCellsBoxes = PlayerPrefs.GetInt("whiteBloodCellsBoxes", maxBoxesCapacity / 2);
+        plateletsBoxes = PlayerPrefs.GetInt("plateletsBoxes", maxBoxesCapacity / 2);
         playerHealth = PlayerPrefs.GetInt("playerHealth", 100);
         bodyAge.text = string.Format("Year {0} month {1}", currentAge, month);
     }
@@ -157,13 +173,13 @@ public class MainGameManager : MonoBehaviour
             UpdateCapacities();
 
             // milestone bonuses / set currencies to max every 5 years(in game age)
-            droplets = maxDropletsCapacity;
-            redBloodCellsBoxes = maxBoxesCapacity;
-            whiteBloodCellsBoxes = maxBoxesCapacity;
-            plateletsBoxes = maxBoxesCapacity;
+            // droplets = maxDropletsCapacity;
+            // redBloodCellsBoxes = maxBoxesCapacity;
+            // whiteBloodCellsBoxes = maxBoxesCapacity;
+            // plateletsBoxes = maxBoxesCapacity;
         }
 
-        // increase hp by 5(healthScale = 5), maximum health is 100
+        // increase hp by 5(healthScale = 5), maimum health is 100
         playerHealth = Math.Max(playerHealth + healthScale, 100);
     }
     
