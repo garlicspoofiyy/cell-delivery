@@ -87,8 +87,7 @@ public class MainGameManager : MonoBehaviour
         Screen.orientation = ScreenOrientation.LandscapeLeft;
 
         // sliders
-        dropletSlider.maxValue = maxDropletsCapacity;
-        dropletSlider.value = droplets;
+        updateRemainingDroplet();
         updateRemainingRBC();
         updateRemainingWBC();
         updateRemainingPlatelet();
@@ -134,6 +133,11 @@ public class MainGameManager : MonoBehaviour
             Debug.Log("Updated capacities: Droplets = " + maxDropletsCapacity + ", Boxes = " + maxBoxesCapacity);
             //Debug.Log("Scale Factor: Droplets = " + scaleFactor);
         }
+        // sliders
+        updateRemainingDroplet();
+        updateRemainingRBC();
+        updateRemainingWBC();
+        updateRemainingPlatelet();
     }
 
     private void OnApplicationQuit()
