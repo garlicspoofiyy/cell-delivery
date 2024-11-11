@@ -18,6 +18,16 @@ public class PlayerMovement : MonoBehaviour
     {
         float directionX = Input.GetAxisRaw("Horizontal");
         playerDirection = new Vector2(directionX, 0).normalized;
+
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Moved)
+            {
+                Vector2 touchDeltaPosition = touch.deltaPosition;
+                playerDirection = new Vector2(touchDeltaPosition.x, 0).normalized;
+            }
+        }
     }
 
     private void FixedUpdate()
