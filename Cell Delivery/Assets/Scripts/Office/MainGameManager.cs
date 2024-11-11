@@ -83,6 +83,9 @@ public class MainGameManager : MonoBehaviour
     }
 
     void Start() {
+        // start the game in landscape mode
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+
         // sliders
         dropletSlider.maxValue = maxDropletsCapacity;
         dropletSlider.value = droplets;
