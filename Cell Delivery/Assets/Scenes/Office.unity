@@ -329,6 +329,7 @@ GameObject:
   - component: {fileID: 189990666}
   - component: {fileID: 189990668}
   - component: {fileID: 189990667}
+  - component: {fileID: 189990669}
   m_Layer: 5
   m_Name: Map
   m_TagString: Untagged
@@ -394,6 +395,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189990665}
   m_CullTransparentMesh: 1
+--- !u!114 &189990669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189990665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 487092a00235cae4fbecc016e4021ee2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notificationButton: {fileID: 916493678}
 --- !u!1 &216323134
 GameObject:
   m_ObjectHideFlags: 0
@@ -3282,7 +3296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &916493677
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3475,7 +3489,6 @@ GameObject:
   - component: {fileID: 1033877940}
   - component: {fileID: 1033877943}
   - component: {fileID: 1033877942}
-  - component: {fileID: 1033877941}
   m_Layer: 5
   m_Name: Body
   m_TagString: Untagged
@@ -3503,19 +3516,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 340.4, y: 581.5}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1033877941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1033877939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 487092a00235cae4fbecc016e4021ee2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  notificationButton: {fileID: 916493678}
 --- !u!114 &1033877942
 MonoBehaviour:
   m_ObjectHideFlags: 0

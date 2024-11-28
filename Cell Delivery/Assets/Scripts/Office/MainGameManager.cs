@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class MainGameManager : MonoBehaviour
 {
@@ -12,8 +13,10 @@ public class MainGameManager : MonoBehaviour
     /// 
     /// Game elements
     /// 
-    private const float levelUpInterval = 2;
+    private const float levelUpInterval = 10;
     private float timer;
+    private bool minigameTimeIsSet;
+    private int timeForMinigame;
 
     /// 
     /// player attributes and core
@@ -91,10 +94,12 @@ public class MainGameManager : MonoBehaviour
         updateRemainingRBC();
         updateRemainingWBC();
         updateRemainingPlatelet();
+        minigameTimeIsSet = false;
+        timeForMinigame = (int)levelUpInterval + 1;
     }
 
-
     void Update() {
+
         // Decrement the timer only when the game is running
         timer -= Time.deltaTime;
 
@@ -104,10 +109,22 @@ public class MainGameManager : MonoBehaviour
             LevelUp();
             timer = levelUpInterval;
             bodyAge.text = string.Format("Year {0} month {1}", currentAge, month);
+        } 
+        else if (timer <= levelUpInterval * 0.8 && !minigameTimeIsSet) 
+        {
+            minigameTimeIsSet = true;
+            timeForMinigame = Random.Range(1, 8);
+        }
+        else if (minigameTimeIsSet && timer <= timeForMinigame)
+        {
+            RandomGameLoader.instance.notificationButton.gameObject.SetActive(true);
+            minigameTimeIsSet = false;
+            timeForMinigame = (int)levelUpInterval + 1;
         }
         // Debug.Log(timer);
+        // Debug.Log(timer);
     }
-
+    
     private void Awake()
     {
         // to reset the data, uncomment the line below
