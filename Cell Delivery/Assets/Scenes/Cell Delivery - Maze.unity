@@ -481,6 +481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winCanvas: {fileID: 602046129}
   timer: {fileID: 619149786}
+  returnButton: {fileID: 0}
 --- !u!61 &230275304
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6035,7 +6036,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &602046130
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6048,7 +6049,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 849773845}
   - {fileID: 1446721593}
   m_Father: {fileID: 179781011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6217,6 +6217,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 849773845}
   - {fileID: 2093914321}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6417,7 +6418,6 @@ GameObject:
   - component: {fileID: 849773848}
   - component: {fileID: 849773847}
   - component: {fileID: 849773846}
-  - component: {fileID: 849773849}
   m_Layer: 5
   m_Name: ReturnButton
   m_TagString: Untagged
@@ -6432,17 +6432,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849773844}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.46728972, y: 0.46728972, z: 0.46728972}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 728486460}
-  m_Father: {fileID: 602046130}
+  m_Father: {fileID: 658109510}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7, y: -160}
+  m_AnchoredPosition: {x: -3.271037, y: -74.76634}
   m_SizeDelta: {x: 203.6936, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &849773846
@@ -6489,8 +6489,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 849773849}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+      - m_Target: {fileID: 230275303}
+        m_TargetAssemblyTypeName: WinTrigger, Assembly-CSharp
         m_MethodName: LoadOffice
         m_Mode: 1
         m_Arguments:
@@ -6539,18 +6539,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849773844}
   m_CullTransparentMesh: 1
---- !u!114 &849773849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 849773844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7f02d2602309b441a758d4cec633ad7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &994199915
 GameObject:
   m_ObjectHideFlags: 0

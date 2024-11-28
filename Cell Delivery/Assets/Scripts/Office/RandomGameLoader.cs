@@ -11,9 +11,6 @@ public class RandomGameLoader : MonoBehaviour
     {
         if (instance == null) {
             instance = this;
-            DontDestroyOnLoad(gameObject);  // Make sure this object survives scene changes
-        } else {
-            Destroy(gameObject);  // Destroy duplicates
         }
     }
     
