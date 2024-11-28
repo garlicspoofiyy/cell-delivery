@@ -63,6 +63,7 @@ public class MainGameManager : MonoBehaviour
     // texts
     public TextMeshProUGUI bodyAge;
 
+
     public void updateRemainingRBC() {
         rbcSlider.maxValue = maxBoxesCapacity;
         rbcSlider.value = redBloodCellsBoxes;

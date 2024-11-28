@@ -6,7 +6,7 @@ public class RandomGameLoader : MonoBehaviour
 {
     public static RandomGameLoader instance;
     public Button notificationButton;
-    
+
     private void Awake()
     {
         if (instance == null) {
@@ -16,6 +16,7 @@ public class RandomGameLoader : MonoBehaviour
             Destroy(gameObject);  // Destroy duplicates
         }
     }
+    
     private string[] gameScenes = {
         "Cell Delivery - Maze",
         "Cell Delivery - Sorting Game",
@@ -29,6 +30,7 @@ public class RandomGameLoader : MonoBehaviour
         // Ensure the button is assigned and add a listener to it
         if (notificationButton != null)
         {
+            Debug.Log("Button assigned");
             notificationButton.onClick.AddListener(LoadRandomGame);
         }
     }
@@ -38,6 +40,7 @@ public class RandomGameLoader : MonoBehaviour
         int randomIndex = Random.Range(0, gameScenes.Length);
         string randomScene = gameScenes[randomIndex];
 
-        SceneManager.LoadScene(randomScene);
+        Debug.Log("Random game: " + randomScene);
+        SceneManager.LoadScene("Cell Delivery - Maze");
     }
 }
