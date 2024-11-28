@@ -3,11 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    void Start()
-    {
+    void Start() {
         Screen.orientation = ScreenOrientation.Portrait;
     }
-    
+
     public void LoadMazeGame()
     {
         SceneManager.LoadScene("Cell Delivery - Maze");
@@ -31,6 +30,11 @@ public class MenuController : MonoBehaviour
     public void LoadStackingGame()
     {
         SceneManager.LoadScene("StackingGame");
+    }
+
+    public void LoadOffice()
+    {
+        SceneManager.LoadScene("Office");
     }
 
     public void LoadMenu()

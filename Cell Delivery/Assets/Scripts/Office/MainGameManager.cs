@@ -98,12 +98,19 @@ public class MainGameManager : MonoBehaviour
         minigameTimeIsSet = false;
         timeForMinigame = (int)levelUpInterval + 1;
     }
+    
+    void OnEnable()
+    {
+        updateRemainingDroplet();
+        updateRemainingRBC();
+        updateRemainingWBC();
+        updateRemainingPlatelet();
+    }
 
     void Update() {
 
         // Decrement the timer only when the game is running
         timer -= Time.deltaTime;
-
         if (timer <= 0)
         {
             // Level up and reset the timer
@@ -130,6 +137,9 @@ public class MainGameManager : MonoBehaviour
     {
         // to reset the data, uncomment the line below
         // PlayerPrefs.DeleteAll();
+
+        // set orientation to landscape
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
 
         // Load saved data when the game starts
         LoadData();

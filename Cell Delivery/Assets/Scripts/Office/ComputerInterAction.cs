@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 using UnityEngine.UI;
@@ -11,7 +12,7 @@ public class ComputerInteraction : MonoBehaviour
     {
         popUpMenu.SetActive(false);
     }
-
+    
     // if the player is within the circle collider trigger, and the player pressed the button, show the popup
     private void OnTriggerEnter2D(Collider2D other)
     {

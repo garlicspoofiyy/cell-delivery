@@ -424,7 +424,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &179781011
 RectTransform:
@@ -438,9 +438,9 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 602046130}
   - {fileID: 619149787}
   - {fileID: 470314604}
-  - {fileID: 602046130}
   - {fileID: 2014610762}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6035,7 +6035,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &602046130
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6048,8 +6048,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1446721593}
   - {fileID: 849773845}
+  - {fileID: 1446721593}
   m_Father: {fileID: 179781011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -6488,7 +6488,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 849773847}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 849773849}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: LoadOffice
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &849773847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6536,10 +6548,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 849773844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80874a44a895440409d8b2d5aadba768, type: 3}
+  m_Script: {fileID: 11500000, guid: a7f02d2602309b441a758d4cec633ad7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnButton: {fileID: 849773846}
 --- !u!1 &994199915
 GameObject:
   m_ObjectHideFlags: 0

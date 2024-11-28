@@ -7,15 +7,15 @@ public class RandomGameLoader : MonoBehaviour
     public static RandomGameLoader instance;
     public Button notificationButton;
 
-    // private void Awake()
-    // {
-    //     if (instance == null) {
-    //         instance = this;
-    //         DontDestroyOnLoad(gameObject);  // Make sure this object survives scene changes
-    //     } else {
-    //         Destroy(gameObject);  // Destroy duplicates
-    //     }
-    // }
+    private void Awake()
+    {
+        if (instance == null) {
+            instance = this;
+            DontDestroyOnLoad(gameObject);  // Make sure this object survives scene changes
+        } else {
+            Destroy(gameObject);  // Destroy duplicates
+        }
+    }
     
     private string[] gameScenes = {
         "Cell Delivery - Maze",
@@ -25,17 +25,7 @@ public class RandomGameLoader : MonoBehaviour
         "StackingGame"
     };
 
-    void Start()
-    {
-        // Ensure the button is assigned and add a listener to it
-        if (notificationButton != null)
-        {
-            Debug.Log("Button assigned");
-            notificationButton.onClick.AddListener(LoadRandomGame);
-        }
-    }
-
-    void LoadRandomGame()
+    public void LoadRandomGame()
     {
         int randomIndex = Random.Range(0, gameScenes.Length);
         string randomScene = gameScenes[randomIndex];
