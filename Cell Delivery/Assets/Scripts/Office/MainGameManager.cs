@@ -111,18 +111,18 @@ public class MainGameManager : MonoBehaviour
             timer = levelUpInterval;
             bodyAge.text = string.Format("Year {0} month {1}", currentAge, month);
         } 
-        else if (timer <= levelUpInterval * 0.8 && !minigameTimeIsSet) 
-        {
-            minigameTimeIsSet = true;
-            timeForMinigame = Random.Range(1, 8);
-        }
-        else if (minigameTimeIsSet && timer <= timeForMinigame)
-        {
-            RandomGameLoader.instance.notificationButton.gameObject.SetActive(true);
-            minigameTimeIsSet = false;
-            timeForMinigame = (int)levelUpInterval + 1;
-        }
-        // Debug.Log(timer);
+        // else if (timer <= levelUpInterval * 0.8 && !minigameTimeIsSet) 
+        // {
+        //     minigameTimeIsSet = true;
+        //     timeForMinigame = Random.Range(1, 8);
+        // }
+        // else if (minigameTimeIsSet && timer <= timeForMinigame)
+        // {
+        //     RandomGameLoader.instance.notificationButton.gameObject.SetActive(true);
+        //     minigameTimeIsSet = false;
+        //     timeForMinigame = (int)levelUpInterval + 1;
+        // }
+        // // Debug.Log(timer);
         // Debug.Log(timer);
     }
     
