@@ -8,8 +8,14 @@ public class ComputerInteraction : MonoBehaviour
     public GameObject popUpMenu;
     public Button onScreenButton; // assign UI button in the Inspector
 
-    void Start()
+    void Awake()
     {
+        // load an object named "Map"
+        popUpMenu = GameObject.Find("Map");
+
+        // load an object named "Button"
+        onScreenButton = onScreenButton.GetComponent<Button>();
+
         popUpMenu.SetActive(false);
     }
     

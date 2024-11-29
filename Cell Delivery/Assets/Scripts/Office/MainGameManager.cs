@@ -62,7 +62,12 @@ public class MainGameManager : MonoBehaviour
 
     // texts
     public TextMeshProUGUI bodyAge;
+    public Canvas slidersCanvas;
 
+
+    public void ToggleCanvas() {
+        slidersCanvas.enabled = !slidersCanvas.enabled;
+    }
 
     public void updateRemainingRBC() {
         rbcSlider.maxValue = maxBoxesCapacity;
@@ -86,22 +91,64 @@ public class MainGameManager : MonoBehaviour
         dropletSlider.value = droplets;
     }
     
+    // // instance of this class to access from other scenes
+    // public static MainGameManager instance;
+
+    // public void SetDroplets(int amount) {
+    //     droplets = amount;
+    // }
+
+    // public int GetDroplets() {
+    //     return droplets;
+    // }
+
+    private void Awake()
+    {
+        // to reset the data, uncomment the line below
+        // PlayerPrefs.DeleteAll();
+        // Load saved data when the game starts
+        LoadData();
+
+        slidersCanvas.enabled = true;
+
+        if (timer <= 0) {
+            timer = levelUpInterval;
+        }
+
+        // if (instance == null)
+        // {
+        //     instance = this;
+        //     Debug.Log("MainGameManager instance created.");
+        // }
+        // else 
+        // {
+        //     Debug.Log("Duplicate MainGameManager instance destroyed.");
+        //     Destroy(gameObject);
+        //     Debug.Log("Droplets" + droplets);
+        // }
+
+        // set dropletSlidet, rbcSlider, wbcSlider, plateletSlider as gameobjects MaxDroplets, MaxRBC, MaxWBC, MaxPlatelets respectively by finding
+        // dropletSlider = GameObject.Find("MaxDroplets").GetComponent<Slider>();
+        // rbcSlider = GameObject.Find("MaxRBC").GetComponent<Slider>();
+        // wbcSlider = GameObject.Find("MaxWBC").GetComponent<Slider>();
+        // plateletSlider = GameObject.Find("MaxPlatelets").GetComponent<Slider>();
+        
+    }
+
     void Start() {
         // start the game in landscape mode
         Screen.orientation = ScreenOrientation.LandscapeLeft;
 
         // sliders
-        updateRemainingDroplet();
-        updateRemainingRBC();
-        updateRemainingWBC();
-        updateRemainingPlatelet();
+        UpdateSliders();
+
         minigameTimeIsSet = false;
         timeForMinigame = (int)levelUpInterval + 1;
     }
     
-    void OnEnable()
+    // whenever a minigame is finished, update the sliders
+    public void UpdateSliders()
     {
-        Debug.Log("Droplets: " + droplets);
         updateRemainingDroplet();
         updateRemainingRBC();
         updateRemainingWBC();
@@ -109,7 +156,6 @@ public class MainGameManager : MonoBehaviour
     }
 
     void Update() {
-
         // Decrement the timer only when the game is running
         timer -= Time.deltaTime;
         if (timer <= 0)
@@ -133,21 +179,6 @@ public class MainGameManager : MonoBehaviour
         // // Debug.Log(timer);
         // Debug.Log(timer);
     }
-    
-    private void Awake()
-    {
-        // to reset the data, uncomment the line below
-        // PlayerPrefs.DeleteAll();
-
-        // set orientation to landscape
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
-
-        // Load saved data when the game starts
-        LoadData();
-        if (timer <= 0) {
-            timer = levelUpInterval;
-        }
-    }
 
     public void UpdateCapacities()
     {
@@ -163,15 +194,12 @@ public class MainGameManager : MonoBehaviour
             //Debug.Log("Scale Factor: Droplets = " + scaleFactor);
         }
         // sliders
-        updateRemainingDroplet();
-        updateRemainingRBC();
-        updateRemainingWBC();
-        updateRemainingPlatelet();
+        UpdateSliders();
     }
 
     private void OnApplicationQuit()
     {
-        Debug.Log("Application is about to quit.");
+        Debug.Log("Application is about to quit. " + droplets);
         // Save data when the game is about to exit
         PlayerPrefs.SetFloat("currentTime", timer);
         PlayerPrefs.SetInt("playerHealth", playerHealth);
@@ -180,6 +208,7 @@ public class MainGameManager : MonoBehaviour
         PlayerPrefs.SetInt("droplets", droplets);
         PlayerPrefs.SetInt("redBloodCellsBoxes", redBloodCellsBoxes);
         PlayerPrefs.SetInt("whiteBloodCellsBoxes", whiteBloodCellsBoxes);
+        PlayerPrefs.SetInt("plateletsBoxes", plateletsBoxes);
         PlayerPrefs.SetInt("maxBoxesCapacity", maxBoxesCapacity);
         PlayerPrefs.SetInt("maxDropletsCapacity", maxDropletsCapacity);
 

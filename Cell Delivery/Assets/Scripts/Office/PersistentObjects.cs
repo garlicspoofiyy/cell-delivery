@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PersistentObjects : MonoBehaviour
 {
-    public static PersistentObjects Instance { get; private set; }
+    public static PersistentObjects Instance;
 
     void Awake()
     {
@@ -13,8 +13,9 @@ public class PersistentObjects : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else if (Instance != this)
+        else 
         {
+            Debug.Log("Duplicate PersistentObjects instance destroyed.");
             Destroy(gameObject);
         }
     }
