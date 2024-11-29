@@ -14,6 +14,7 @@ public class JoystickMovement : MonoBehaviour
     public Vector2 joystickTouchPos;
     public Vector2 joystickOriginalPos;
     private float joystickRadius;
+    private bool isDragging = false;
 
 
     // Start is called once per frame
@@ -25,13 +26,22 @@ public class JoystickMovement : MonoBehaviour
 
     public void PointerDown() 
     {
-        joystick.transform.position = Input.mousePosition;
-        joystickBG.transform.position = Input.mousePosition;
-        joystickTouchPos = Input.mousePosition;
+        if (RectTransformUtility.RectangleContainsScreenPoint(
+            joystickBG.GetComponent<RectTransform>(), 
+            Input.mousePosition, 
+            null))
+        {
+            isDragging = true;
+            joystick.transform.position = Input.mousePosition;
+            joystickBG.transform.position = Input.mousePosition;
+            joystickTouchPos = Input.mousePosition;
+        }
     }
 
     public void Drag(BaseEventData baseEventData) 
     {
+        if (!isDragging) return;
+
         PointerEventData pointerEventData = baseEventData as PointerEventData;
         Vector2 dragPos = pointerEventData.position;
         joystickVec = (dragPos - joystickTouchPos).normalized;
@@ -52,6 +62,7 @@ public class JoystickMovement : MonoBehaviour
 
     public void PointerUp() 
     {
+        isDragging = false;
         joystickVec = Vector2.zero;
         joystick.transform.position = joystickOriginalPos;
         joystickBG.transform.position = joystickOriginalPos;

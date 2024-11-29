@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class MainGameManager : MonoBehaviour
 {
@@ -12,8 +13,10 @@ public class MainGameManager : MonoBehaviour
     /// 
     /// Game elements
     /// 
-    private const float levelUpInterval = 2;
+    private const float levelUpInterval = 10;
     private float timer;
+    private bool minigameTimeIsSet;
+    private int timeForMinigame;
 
     /// 
     /// player attributes and core
@@ -43,8 +46,8 @@ public class MainGameManager : MonoBehaviour
     private const int baseBoxesCapacity = 50;
 
     // CURRENT CAPACITY
-    private int maxDropletsCapacity;
-    private int maxBoxesCapacity;
+    public static int maxDropletsCapacity;
+    public static int maxBoxesCapacity;
 
 
     /// 
@@ -60,39 +63,84 @@ public class MainGameManager : MonoBehaviour
     // texts
     public TextMeshProUGUI bodyAge;
 
-    void Start() {
-        // sliders
-        dropletSlider.maxValue = maxDropletsCapacity;
-        dropletSlider.value = droplets;
 
+    public void updateRemainingRBC() {
         rbcSlider.maxValue = maxBoxesCapacity;
         rbcSlider.value = redBloodCellsBoxes;
+    }
 
+
+    public void updateRemainingWBC() {
         wbcSlider.maxValue = maxBoxesCapacity;
         wbcSlider.value = whiteBloodCellsBoxes;
+    }
 
+    
+    public void updateRemainingPlatelet() {
         plateletSlider.maxValue = maxBoxesCapacity;
         plateletSlider.value = plateletsBoxes;
     }
 
+    public void updateRemainingDroplet() {
+        dropletSlider.maxValue = maxDropletsCapacity;
+        dropletSlider.value = droplets;
+    }
+    
+    void Start() {
+        // start the game in landscape mode
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+
+        // sliders
+        updateRemainingDroplet();
+        updateRemainingRBC();
+        updateRemainingWBC();
+        updateRemainingPlatelet();
+        minigameTimeIsSet = false;
+        timeForMinigame = (int)levelUpInterval + 1;
+    }
+    
+    void OnEnable()
+    {
+        Debug.Log("Droplets: " + droplets);
+        updateRemainingDroplet();
+        updateRemainingRBC();
+        updateRemainingWBC();
+        updateRemainingPlatelet();
+    }
+
     void Update() {
+
         // Decrement the timer only when the game is running
         timer -= Time.deltaTime;
-
         if (timer <= 0)
         {
             // Level up and reset the timer
             LevelUp();
             timer = levelUpInterval;
             bodyAge.text = string.Format("Year {0} month {1}", currentAge, month);
-        }
+        } 
+        // else if (timer <= levelUpInterval * 0.8 && !minigameTimeIsSet) 
+        // {
+        //     minigameTimeIsSet = true;
+        //     timeForMinigame = Random.Range(1, 8);
+        // }
+        // else if (minigameTimeIsSet && timer <= timeForMinigame)
+        // {
+        //     RandomGameLoader.instance.notificationButton.gameObject.SetActive(true);
+        //     minigameTimeIsSet = false;
+        //     timeForMinigame = (int)levelUpInterval + 1;
+        // }
+        // // Debug.Log(timer);
         // Debug.Log(timer);
     }
-
+    
     private void Awake()
     {
         // to reset the data, uncomment the line below
         // PlayerPrefs.DeleteAll();
+
+        // set orientation to landscape
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
 
         // Load saved data when the game starts
         LoadData();
@@ -114,10 +162,16 @@ public class MainGameManager : MonoBehaviour
             Debug.Log("Updated capacities: Droplets = " + maxDropletsCapacity + ", Boxes = " + maxBoxesCapacity);
             //Debug.Log("Scale Factor: Droplets = " + scaleFactor);
         }
+        // sliders
+        updateRemainingDroplet();
+        updateRemainingRBC();
+        updateRemainingWBC();
+        updateRemainingPlatelet();
     }
 
     private void OnApplicationQuit()
     {
+        Debug.Log("Application is about to quit.");
         // Save data when the game is about to exit
         PlayerPrefs.SetFloat("currentTime", timer);
         PlayerPrefs.SetInt("playerHealth", playerHealth);
@@ -126,9 +180,8 @@ public class MainGameManager : MonoBehaviour
         PlayerPrefs.SetInt("droplets", droplets);
         PlayerPrefs.SetInt("redBloodCellsBoxes", redBloodCellsBoxes);
         PlayerPrefs.SetInt("whiteBloodCellsBoxes", whiteBloodCellsBoxes);
-        PlayerPrefs.SetInt("plateletsBoxes", plateletsBoxes);
-        PlayerPrefs.SetInt("plateletsBoxes", maxBoxesCapacity);
-        PlayerPrefs.SetInt("plateletsBoxes", maxDropletsCapacity);
+        PlayerPrefs.SetInt("maxBoxesCapacity", maxBoxesCapacity);
+        PlayerPrefs.SetInt("maxDropletsCapacity", maxDropletsCapacity);
 
         // Ensure PlayerPrefs are written to disk
         PlayerPrefs.Save();
@@ -142,10 +195,10 @@ public class MainGameManager : MonoBehaviour
         month = PlayerPrefs.GetInt("month", 0);
         maxBoxesCapacity = PlayerPrefs.GetInt("maxBoxesCapacity", baseBoxesCapacity);
         maxDropletsCapacity = PlayerPrefs.GetInt("maxDropletsCapacity", baseDropletsCapacity);
-        droplets = PlayerPrefs.GetInt("droplets", maxDropletsCapacity);
-        redBloodCellsBoxes = PlayerPrefs.GetInt("redBloodCellsBoxes", maxBoxesCapacity);
-        whiteBloodCellsBoxes = PlayerPrefs.GetInt("whiteBloodCellsBoxes", maxBoxesCapacity);
-        plateletsBoxes = PlayerPrefs.GetInt("plateletsBoxes", maxBoxesCapacity);
+        droplets = PlayerPrefs.GetInt("droplets", maxDropletsCapacity / 2);
+        redBloodCellsBoxes = PlayerPrefs.GetInt("redBloodCellsBoxes", maxBoxesCapacity / 2);
+        whiteBloodCellsBoxes = PlayerPrefs.GetInt("whiteBloodCellsBoxes", maxBoxesCapacity / 2);
+        plateletsBoxes = PlayerPrefs.GetInt("plateletsBoxes", maxBoxesCapacity / 2);
         playerHealth = PlayerPrefs.GetInt("playerHealth", 100);
         bodyAge.text = string.Format("Year {0} month {1}", currentAge, month);
     }
@@ -157,13 +210,13 @@ public class MainGameManager : MonoBehaviour
             UpdateCapacities();
 
             // milestone bonuses / set currencies to max every 5 years(in game age)
-            droplets = maxDropletsCapacity;
-            redBloodCellsBoxes = maxBoxesCapacity;
-            whiteBloodCellsBoxes = maxBoxesCapacity;
-            plateletsBoxes = maxBoxesCapacity;
+            // droplets = maxDropletsCapacity;
+            // redBloodCellsBoxes = maxBoxesCapacity;
+            // whiteBloodCellsBoxes = maxBoxesCapacity;
+            // plateletsBoxes = maxBoxesCapacity;
         }
 
-        // increase hp by 5(healthScale = 5), maximum health is 100
+        // increase hp by 5(healthScale = 5), maimum health is 100
         playerHealth = Math.Max(playerHealth + healthScale, 100);
     }
     
