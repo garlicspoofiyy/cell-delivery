@@ -57,6 +57,12 @@ public class MainGameManager : MonoBehaviour
     public Slider wbcSlider;
     public Slider plateletSlider;
 
+    // Notification management
+    public GameObject notificationPrefab; 
+    public RectTransform bodyMap; 
+    private List<GameObject> activeNotifications = new List<GameObject>();
+    private bool notificationSpawned = false;
+
     // texts
     public TextMeshProUGUI bodyAge;
 
@@ -107,6 +113,13 @@ public class MainGameManager : MonoBehaviour
             bodyAge.text = string.Format("Year {0} month {1}", currentAge, month);
         }
         // Debug.Log(timer);
+
+        // Check every 3 months for notification
+        if (month % 3 == 0 && month != 0 && !notificationSpawned)
+        {
+            SpawnNotification();
+            notificationSpawned = true;
+        }
     }
 
     private void Awake()
@@ -189,6 +202,7 @@ public class MainGameManager : MonoBehaviour
     private void LevelUp()
     {
         month += 1;
+        notificationSpawned = false; // Flag reset for notification spawing
         if (month == 13) {
             month = 0;
             currentAge += 1;
@@ -196,5 +210,19 @@ public class MainGameManager : MonoBehaviour
             LevelUpPerks();
         }
         Debug.Log("Leveled up! Current Age: " + currentAge);
+    }
+
+    private void SpawnNotification()
+    {
+        GameObject newNotification = Instantiate(notificationPrefab, bodyMap);
+
+        // Randomly position the notification within the body map
+        RectTransform notificationRect = newNotification.GetComponent<RectTransform>();
+        float randomX = Random.Range(0, bodyMap.rect.width) - bodyMap.rect.width / 2;
+        float randomY = Random.Range(0, bodyMap.rect.height) - bodyMap.rect.height / 2;
+        notificationRect.anchoredPosition = new Vector2(randomX, randomY);
+
+        // Add to the list of active notifications
+        activeNotifications.Add(newNotification);
     }
 }
