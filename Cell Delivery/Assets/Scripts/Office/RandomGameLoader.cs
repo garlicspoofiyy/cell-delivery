@@ -4,10 +4,9 @@ using UnityEngine.UI;
 
 public class RandomGameLoader : MonoBehaviour
 {
+    public static RandomGameLoader instance;
     public Button notificationButton;
 
-<<<<<<< Updated upstream
-=======
     private void Awake()
     {
         if (instance == null) {
@@ -23,8 +22,6 @@ public class RandomGameLoader : MonoBehaviour
         }
     }
 
-    
->>>>>>> Stashed changes
     private string[] gameScenes = {
         "Cell Delivery - Maze",
         "Cell Delivery - Sorting Game",
@@ -33,25 +30,13 @@ public class RandomGameLoader : MonoBehaviour
         "StackingGame"
     };
 
-    void Start()
-    {
-        // Ensure the button is assigned and add a listener to it
-        if (notificationButton != null)
-        {
-            notificationButton.onClick.AddListener(LoadRandomGame);
-        }
-    }
-
-    void LoadRandomGame()
+    public void LoadRandomGame()
     {
         int randomIndex = Random.Range(0, gameScenes.Length);
         string randomScene = gameScenes[randomIndex];
 
-<<<<<<< Updated upstream
-        SceneManager.LoadScene(randomScene);
-=======
         Debug.Log("Random game: " + randomScene);
-        SceneManager.LoadScene("Cell Delivery - Maze");
->>>>>>> Stashed changes
+        SceneManager.LoadScene(randomScene);
+        // more code here
     }
 }

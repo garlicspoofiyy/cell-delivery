@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class MainGameManager : MonoBehaviour
 {
@@ -12,8 +13,10 @@ public class MainGameManager : MonoBehaviour
     /// 
     /// Game elements
     /// 
-    private const float levelUpInterval = 2;
+    private const float levelUpInterval = 10;
     private float timer;
+    private bool minigameTimeIsSet;
+    private int timeForMinigame;
 
     /// 
     /// player attributes and core
@@ -66,6 +69,7 @@ public class MainGameManager : MonoBehaviour
     // texts
     public TextMeshProUGUI bodyAge;
 
+
     public void updateRemainingRBC() {
         rbcSlider.maxValue = maxBoxesCapacity;
         rbcSlider.value = redBloodCellsBoxes;
@@ -87,31 +91,52 @@ public class MainGameManager : MonoBehaviour
         dropletSlider.maxValue = maxDropletsCapacity;
         dropletSlider.value = droplets;
     }
-
+    
     void Start() {
         // start the game in landscape mode
         Screen.orientation = ScreenOrientation.LandscapeLeft;
 
         // sliders
-        dropletSlider.maxValue = maxDropletsCapacity;
-        dropletSlider.value = droplets;
+        updateRemainingDroplet();
+        updateRemainingRBC();
+        updateRemainingWBC();
+        updateRemainingPlatelet();
+        minigameTimeIsSet = false;
+        timeForMinigame = (int)levelUpInterval + 1;
+    }
+    
+    void OnEnable()
+    {
+        Debug.Log("Droplets: " + droplets);
+        updateRemainingDroplet();
         updateRemainingRBC();
         updateRemainingWBC();
         updateRemainingPlatelet();
     }
 
-
     void Update() {
+
         // Decrement the timer only when the game is running
         timer -= Time.deltaTime;
-
         if (timer <= 0)
         {
             // Level up and reset the timer
             LevelUp();
             timer = levelUpInterval;
             bodyAge.text = string.Format("Year {0} month {1}", currentAge, month);
-        }
+        } 
+        // else if (timer <= levelUpInterval * 0.8 && !minigameTimeIsSet) 
+        // {
+        //     minigameTimeIsSet = true;
+        //     timeForMinigame = Random.Range(1, 8);
+        // }
+        // else if (minigameTimeIsSet && timer <= timeForMinigame)
+        // {
+        //     RandomGameLoader.instance.notificationButton.gameObject.SetActive(true);
+        //     minigameTimeIsSet = false;
+        //     timeForMinigame = (int)levelUpInterval + 1;
+        // }
+        // // Debug.Log(timer);
         // Debug.Log(timer);
 
         // Check every 3 months for notification
@@ -121,11 +146,14 @@ public class MainGameManager : MonoBehaviour
             notificationSpawned = true;
         }
     }
-
+    
     private void Awake()
     {
         // to reset the data, uncomment the line below
         // PlayerPrefs.DeleteAll();
+
+        // set orientation to landscape
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
 
         // Load saved data when the game starts
         LoadData();
@@ -147,10 +175,16 @@ public class MainGameManager : MonoBehaviour
             Debug.Log("Updated capacities: Droplets = " + maxDropletsCapacity + ", Boxes = " + maxBoxesCapacity);
             //Debug.Log("Scale Factor: Droplets = " + scaleFactor);
         }
+        // sliders
+        updateRemainingDroplet();
+        updateRemainingRBC();
+        updateRemainingWBC();
+        updateRemainingPlatelet();
     }
 
     private void OnApplicationQuit()
     {
+        Debug.Log("Application is about to quit.");
         // Save data when the game is about to exit
         PlayerPrefs.SetFloat("currentTime", timer);
         PlayerPrefs.SetInt("playerHealth", playerHealth);

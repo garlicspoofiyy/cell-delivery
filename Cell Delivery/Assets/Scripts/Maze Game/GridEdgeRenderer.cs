@@ -16,6 +16,9 @@ public class GridEdgeRenderer : MonoBehaviour
 
     void Start()
     {
+        // set orientation to landscape
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+
         // initialize grid
         for (int i = 0; i < rows; i++)
         {
