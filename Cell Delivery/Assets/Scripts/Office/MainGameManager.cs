@@ -85,7 +85,7 @@ public class MainGameManager : MonoBehaviour
         dropletSlider.maxValue = maxDropletsCapacity;
         dropletSlider.value = droplets;
     }
-
+    
     void Start() {
         // start the game in landscape mode
         Screen.orientation = ScreenOrientation.LandscapeLeft;
@@ -101,6 +101,7 @@ public class MainGameManager : MonoBehaviour
     
     void OnEnable()
     {
+        Debug.Log("Droplets: " + droplets);
         updateRemainingDroplet();
         updateRemainingRBC();
         updateRemainingWBC();
@@ -170,6 +171,7 @@ public class MainGameManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+        Debug.Log("Application is about to quit.");
         // Save data when the game is about to exit
         PlayerPrefs.SetFloat("currentTime", timer);
         PlayerPrefs.SetInt("playerHealth", playerHealth);

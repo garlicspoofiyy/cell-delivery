@@ -29,5 +29,6 @@ public class RandomGameLoader : MonoBehaviour
 
         Debug.Log("Random game: " + randomScene);
         SceneManager.LoadScene("Cell Delivery - Maze");
+        // more code here
     }
 }
