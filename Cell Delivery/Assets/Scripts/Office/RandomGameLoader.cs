@@ -14,6 +14,14 @@ public class RandomGameLoader : MonoBehaviour
         }
     }
     
+    private void Start()
+    {
+        if (notificationButton != null)
+        {
+            notificationButton.onClick.AddListener(LoadRandomGame);
+        }
+    }
+
     private string[] gameScenes = {
         "Cell Delivery - Maze",
         "Cell Delivery - Sorting Game",
@@ -28,7 +36,7 @@ public class RandomGameLoader : MonoBehaviour
         string randomScene = gameScenes[randomIndex];
 
         Debug.Log("Random game: " + randomScene);
-        SceneManager.LoadScene("Cell Delivery - Maze");
+        SceneManager.LoadScene(randomScene);
         // more code here
     }
 }
