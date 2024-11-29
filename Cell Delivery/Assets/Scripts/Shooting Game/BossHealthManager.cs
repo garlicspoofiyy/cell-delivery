@@ -8,19 +8,15 @@ public class BossHealthManager : MonoBehaviour
     public enum Difficulty { Easy, Mediocre, Hard }
     public Difficulty difficultyLevel;
 
-    public Text basketText;
-    public Text winText; 
     private int score;
     public Transform parentClot;
+
+    public GameOverScreen GameOverScreen;
 
     void Start()
     {
         SetInitialScore();
-        UpdateText();
-        if (winText != null)
-        {
-            winText.text = ""; 
-        }
+        gameObject.SetActive(false);
     }
 
     void SetInitialScore()
@@ -44,7 +40,6 @@ public class BossHealthManager : MonoBehaviour
         if (collision.gameObject.name == "Bullet(Clone)")
         {
             score--;
-            UpdateText();
             Destroy(collision.gameObject);
         }
 
@@ -54,7 +49,8 @@ public class BossHealthManager : MonoBehaviour
             {
                 Destroy(parentClot.gameObject);
             }
-            DisplayWinMessage();
+
+            Cleared();
             
             // Deactivate the collider
             Collider2D collider = GetComponent<Collider2D>();
@@ -65,19 +61,8 @@ public class BossHealthManager : MonoBehaviour
         }
     }
 
-    void UpdateText()
+    void Cleared()
     {
-        if (basketText != null)
-        {
-            basketText.text = "" + score.ToString();
-        }
-    }
-
-    void DisplayWinMessage()
-    {
-        if (winText != null)
-        {
-            winText.text = "You Win!";
-        }
+        GameOverScreen.Setup();
     }
 }

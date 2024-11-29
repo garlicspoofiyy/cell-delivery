@@ -26,17 +26,32 @@ public class PlayerMovement : MonoBehaviour
 
             // Smoothly move the player towards the touch position
             transform.position = Vector3.Lerp(transform.position, new Vector3(touchPosition.x, transform.position.y, transform.position.z), Time.deltaTime * playerSpeed);
-            playerDirection = new Vector2(touchPosition.x - transform.position.x, 0).normalized; // Update player direction
+            
+            // Calculate the direction based on the touch position and player position
+            float direction = touchPosition.x - transform.position.x;
+            
+            // Update animator parameters based on movement
+            if (direction < -0.1f)
+            {
+                animator.SetBool("isMoving", true);
+                animator.SetFloat("moveDirection", -1f); // Moving left
+            }
+            else if (direction > 0.1f)
+            {
+                animator.SetBool("isMoving", true);
+                animator.SetFloat("moveDirection", 1f); // Moving right
+            }
+            else if (direction == 0)
+            {
+                animator.SetBool("isMoving", false); // Idle
+                animator.SetFloat("moveDirection", 0f);
+            }
         }
         else
         {
             float directionX = Input.GetAxisRaw("Horizontal");
             playerDirection = new Vector2(directionX, 0).normalized;
         }
-
-        // Update animator parameters based on movement
-        animator.SetBool("isMoving", playerDirection.x != 0); // Set moving state
-        animator.SetFloat("moveDirection", playerDirection.x); // Set direction
     }
 
     private void FixedUpdate()

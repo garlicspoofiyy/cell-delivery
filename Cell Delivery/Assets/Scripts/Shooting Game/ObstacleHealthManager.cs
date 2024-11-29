@@ -12,6 +12,8 @@ public class ObstacleHealthManager : MonoBehaviour
     private int score;
     public Transform parentClot;
 
+    public GameObject explosionPrefab;
+
     void Start()
     {
         SetInitialScore();
@@ -45,8 +47,14 @@ public class ObstacleHealthManager : MonoBehaviour
 
         if (score <= 0)
         {
-            Destroy(parentClot.gameObject);
+            DestroyBloodClot();
         }
+    }
+
+    public void DestroyBloodClot()
+    {
+        Instantiate(explosionPrefab, transform.position, transform.rotation);
+        Destroy(parentClot.gameObject);
     }
 
     void UpdateText()
