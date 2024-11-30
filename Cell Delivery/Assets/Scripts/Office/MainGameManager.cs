@@ -107,13 +107,16 @@ public class MainGameManager : MonoBehaviour
     // public int GetDroplets() {
     //     return droplets;
     // }
+    public static GameObject persistentObjects;
 
-    private void Awake()
+     private void Awake()
     {
         // to reset the data, uncomment the line below
         // PlayerPrefs.DeleteAll();
         // Load saved data when the game starts
         LoadData();
+        
+        persistentObjects = GameObject.Find("PersistentObjects");
 
         slidersCanvas.enabled = true;
 
@@ -171,24 +174,12 @@ public class MainGameManager : MonoBehaviour
             timer = levelUpInterval;
             bodyAge.text = string.Format("Year {0} month {1}", currentAge, month);
         } 
-        // else if (timer <= levelUpInterval * 0.8 && !minigameTimeIsSet) 
-        // {
-        //     minigameTimeIsSet = true;
-        //     timeForMinigame = Random.Range(1, 8);
-        // }
-        // else if (minigameTimeIsSet && timer <= timeForMinigame)
-        // {
-        //     RandomGameLoader.instance.notificationButton.gameObject.SetActive(true);
-        //     minigameTimeIsSet = false;
-        //     timeForMinigame = (int)levelUpInterval + 1;
-        // }
-        // // Debug.Log(timer);
-        // Debug.Log(timer);
 
         // Check every 3 months for notification
         if (month % 3 == 0 && month != 0 && !notificationSpawned)
         {
             SpawnNotification();
+            Debug.Log("Notification spawned!");
             notificationSpawned = true;
         }
     }

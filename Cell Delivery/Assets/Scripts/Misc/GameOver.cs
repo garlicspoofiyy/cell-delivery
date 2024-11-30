@@ -7,7 +7,7 @@ using System;
 
 public class GameOverScreen : MonoBehaviour
 {
-    Canvas ResourceCanvas;
+    GameObject PersistentObjects;
     public void Setup() 
     {
         gameObject.SetActive(true);
@@ -16,8 +16,7 @@ public class GameOverScreen : MonoBehaviour
     public void Return()
     {
         // find resource canvas and enable it
-        ResourceCanvas = GameObject.Find("ResourceCanvas").GetComponent<Canvas>();
-        ResourceCanvas.enabled = true;
+        MainGameManager.persistentObjects.SetActive(true);;
 
         Debug.Log("Current droplets: " + MainGameManager.droplets);
         MainGameManager.droplets = Math.Max(MainGameManager.maxDropletsCapacity, MainGameManager.droplets - 10);
@@ -33,9 +32,7 @@ public class GameOverScreen : MonoBehaviour
 
     public void ReturnOnWin() 
     {
-        // find resource canvas and enable it
-        ResourceCanvas = GameObject.Find("ResourceCanvas").GetComponent<Canvas>();
-        ResourceCanvas.enabled = true;
+        MainGameManager.persistentObjects.SetActive(true);
 
         Debug.Log("Current droplets: " + MainGameManager.droplets);
         MainGameManager.droplets = Math.Min(MainGameManager.maxDropletsCapacity, MainGameManager.droplets + 10);
