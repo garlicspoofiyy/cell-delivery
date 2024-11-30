@@ -481,7 +481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winCanvas: {fileID: 602046129}
   timer: {fileID: 619149786}
-  returnButton: {fileID: 0}
+  returnButton: {fileID: 849773844}
 --- !u!61 &230275304
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6124,7 +6124,7 @@ GameObject:
   - component: {fileID: 658109507}
   - component: {fileID: 658109506}
   m_Layer: 5
-  m_Name: Canvas (Menu)
+  m_Name: Canvas(Menu)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -4,14 +4,14 @@ using UnityEngine.UI;
 
 public class RandomGameLoader : MonoBehaviour
 {
-    public static RandomGameLoader instance;
+    public static bool hasWon;
     public Button notificationButton;
+    public Canvas slidersCanvas;
 
     private void Awake()
     {
-        if (instance == null) {
-            instance = this;
-        }
+        // find slidersCanvas
+        slidersCanvas = GameObject.Find("ResourceCanvas").GetComponent<Canvas>();
     }
     
     private void Start()
@@ -32,11 +32,17 @@ public class RandomGameLoader : MonoBehaviour
 
     public void LoadRandomGame()
     {
+        hasWon = false;
+        // randomize Game
         int randomIndex = Random.Range(0, gameScenes.Length);
         string randomScene = gameScenes[randomIndex];
 
         Debug.Log("Random game: " + randomScene);
-        SceneManager.LoadScene(randomScene);
-        // more code here
+
+        // Set slider canvas inactive
+        slidersCanvas.enabled = false;
+
+        // load the game
+        SceneManager.LoadScene("Cell Delivery - Maze");
     }
 }
