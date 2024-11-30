@@ -8,7 +8,7 @@ public class CarbonDioxideTrigger : MonoBehaviour
 {
     public Slider timerSlider;
     public TextMeshProUGUI timerText;
-    private float co2Time = 3f;
+    private float co2Time = 45f;
     private bool resetTimer;
     int counter = GameManager.requiredBox;
 
