@@ -3842,7 +3842,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1531698822}
   - component: {fileID: 1531698821}
-  - component: {fileID: 1531698823}
   - component: {fileID: 1531698824}
   m_Layer: 0
   m_Name: Grid
@@ -3881,31 +3880,6 @@ Transform:
   - {fileID: 239657915}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1531698823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531698820}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82c9573008108ce44981b6da4ee7ae32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 2657669330712323540, guid: 11c1e37db0784384d9ef916e4d05b46e, type: 3}
-  parentPlatform: {fileID: 1306265125}
-  numberOfPrefabs: 3
-  minPositions:
-  - {x: -3, y: 0}
-  - {x: -3, y: 5}
-  - {x: -3, y: -5}
-  maxPositions:
-  - {x: 3, y: 0}
-  - {x: 3, y: 5}
-  - {x: 3, y: -5}
-  textParent: {fileID: 1306265125}
-  text: {fileID: 1198802858639986011, guid: da48397b660c1ae4c881fdd5a2d2015e, type: 3}
 --- !u!114 &1531698824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3919,8 +3893,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 2657669330712323540, guid: 11c1e37db0784384d9ef916e4d05b46e, type: 3}
-  numberOfPrefabs: 6
-  spacing: -5
+  numberOfPrefabs: 5
+  spacing: 3
 --- !u!1 &1561831253
 GameObject:
   m_ObjectHideFlags: 0
