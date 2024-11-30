@@ -31,14 +31,7 @@ public class TargetTissue : MonoBehaviour
                 // Reference to UpdateHealthBar(maxHealth, currentHealth) for health bar UI
                 healthBar.UpdateHealthBar(30, health);  
             }
-
-            if (health <= 0) 
-            {
-                // Destroy the tissue when health reaches 0
-                Destroy(gameObject);
-            }
         }
-        
     }
 
     void Start()
@@ -103,7 +96,7 @@ public class TargetTissue : MonoBehaviour
             if (health <= 0)
             {
                 Destroy(gameObject);  
-
+                FightingGameManager.tissuesLeft--;
                 // Exit the coroutine to prevent further execution
                 yield break;
             }

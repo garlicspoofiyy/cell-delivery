@@ -9,14 +9,25 @@ public class EnemySpawnerFightingGame : MonoBehaviour
     
     // An array of Transform points where enemies will be spawned
     public Transform[] spawnerPoints;
-    public int enemiesPerSpawner = 2;
-    public float spawnDelay = 1f;
+    int enemiesPerSpawner = 1;
+
+    public static int enemiesLeft;
+    float spawnDelay = 1f;
+
     void Start()
     {
         // Start the coroutine to spawn enemies
         StartCoroutine(SpawnEnemy());
+        enemiesLeft = enemiesPerSpawner * spawnerPoints.Length;
     }
 
+    void Update()
+    {
+        if (enemiesLeft == 0)
+        {
+            FightingGameManager.hasWon = true;
+        }
+    }
     IEnumerator SpawnEnemy()
     {
         // Loop through each spawner point
