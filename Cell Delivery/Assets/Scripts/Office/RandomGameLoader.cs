@@ -14,6 +14,14 @@ public class RandomGameLoader : MonoBehaviour
         slidersCanvas = GameObject.Find("ResourceCanvas").GetComponent<Canvas>();
     }
     
+    private void Start()
+    {
+        if (notificationButton != null)
+        {
+            notificationButton.onClick.AddListener(LoadRandomGame);
+        }
+    }
+
     private string[] gameScenes = {
         "Cell Delivery - Maze",
         "Cell Delivery - Sorting Game",
@@ -21,11 +29,6 @@ public class RandomGameLoader : MonoBehaviour
         "ShootingGame",
         "StackingGame"
     };
-
-    public void Start()
-    {
-        notificationButton.onClick.AddListener(LoadRandomGame);
-    }
 
     public void LoadRandomGame()
     {

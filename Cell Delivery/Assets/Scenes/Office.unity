@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 487092a00235cae4fbecc016e4021ee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notificationButton: {fileID: 916493678}
+  notificationButton: {fileID: 0}
 --- !u!4 &6942247
 Transform:
   m_ObjectHideFlags: 0
@@ -3658,8 +3658,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 916493677}
+  m_Children: []
   m_Father: {fileID: 189990666}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -6798,6 +6797,8 @@ MonoBehaviour:
   rbcSlider: {fileID: 804513717}
   wbcSlider: {fileID: 1762553275}
   plateletSlider: {fileID: 1121957971}
+  notificationPrefab: {fileID: 7914511521098753805, guid: 26dafd3160d2ce845a6342c2a4296ead, type: 3}
+  bodyMap: {fileID: 1033877940}
   bodyAge: {fileID: 798628687}
   slidersCanvas: {fileID: 127969503}
 --- !u!4 &1856380013

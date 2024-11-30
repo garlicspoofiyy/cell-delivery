@@ -25,7 +25,7 @@ public class Powerup : MonoBehaviour
 
         if (score <= 0) 
         {
-            PlayerSpawner.playerCount++;
+            // PlayerSpawner.playerCount++;
             Destroy(parentClot.gameObject);
         }
     }
