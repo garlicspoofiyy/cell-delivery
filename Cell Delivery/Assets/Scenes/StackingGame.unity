@@ -238,6 +238,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7951637288115268890, guid: ce08a5ead6831ce4caf9946bbb652a24, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7957811947765415078, guid: ce08a5ead6831ce4caf9946bbb652a24, type: 3}
       propertyPath: m_Name
       value: GameOver
@@ -4004,6 +4008,10 @@ PrefabInstance:
     - target: {fileID: 7677400540765529690, guid: 5ce4a14b814f49643b60a4b85647f5fd, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951637288115268890, guid: 5ce4a14b814f49643b60a4b85647f5fd, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7957811947765415078, guid: 5ce4a14b814f49643b60a4b85647f5fd, type: 3}
       propertyPath: m_Name
