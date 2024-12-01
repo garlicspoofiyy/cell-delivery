@@ -1,3 +1,4 @@
+using Unity.Notifications;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -6,13 +7,6 @@ public class RandomGameLoader : MonoBehaviour
 {
     public static bool hasWon;
     public Button notificationButton;
-    public Canvas slidersCanvas;
-
-    private void Awake()
-    {
-        // find slidersCanvas
-        slidersCanvas = GameObject.Find("ResourceCanvas").GetComponent<Canvas>();
-    }
     
     private void Start()
     {
@@ -32,7 +26,11 @@ public class RandomGameLoader : MonoBehaviour
 
     public void LoadRandomGame()
     {
+        // Remove the notification button once accepted
+        Destroy(notificationButton.gameObject);
+
         hasWon = false;
+        
         // randomize Game
         int randomIndex = Random.Range(0, gameScenes.Length);
         string randomScene = gameScenes[randomIndex];
@@ -40,9 +38,9 @@ public class RandomGameLoader : MonoBehaviour
         Debug.Log("Random game: " + randomScene);
 
         // Set slider canvas inactive
-        slidersCanvas.enabled = false;
+        MainGameManager.persistentObjects.SetActive(false);
 
         // load the game
-        SceneManager.LoadScene("Cell Delivery - Maze");
+        SceneManager.LoadScene(randomScene);
     }
 }

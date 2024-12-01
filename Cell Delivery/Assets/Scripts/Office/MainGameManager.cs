@@ -97,48 +97,22 @@ public class MainGameManager : MonoBehaviour
         dropletSlider.value = droplets;
     }
     
-    // // instance of this class to access from other scenes
-    // public static MainGameManager instance;
+    public static GameObject persistentObjects;
 
-    // public void SetDroplets(int amount) {
-    //     droplets = amount;
-    // }
-
-    // public int GetDroplets() {
-    //     return droplets;
-    // }
-
-    private void Awake()
+     private void Awake()
     {
         // to reset the data, uncomment the line below
         // PlayerPrefs.DeleteAll();
         // Load saved data when the game starts
         LoadData();
+        
+        persistentObjects = GameObject.Find("PersistentObjects");
 
         slidersCanvas.enabled = true;
 
         if (timer <= 0) {
             timer = levelUpInterval;
         }
-
-        // if (instance == null)
-        // {
-        //     instance = this;
-        //     Debug.Log("MainGameManager instance created.");
-        // }
-        // else 
-        // {
-        //     Debug.Log("Duplicate MainGameManager instance destroyed.");
-        //     Destroy(gameObject);
-        //     Debug.Log("Droplets" + droplets);
-        // }
-
-        // set dropletSlidet, rbcSlider, wbcSlider, plateletSlider as gameobjects MaxDroplets, MaxRBC, MaxWBC, MaxPlatelets respectively by finding
-        // dropletSlider = GameObject.Find("MaxDroplets").GetComponent<Slider>();
-        // rbcSlider = GameObject.Find("MaxRBC").GetComponent<Slider>();
-        // wbcSlider = GameObject.Find("MaxWBC").GetComponent<Slider>();
-        // plateletSlider = GameObject.Find("MaxPlatelets").GetComponent<Slider>();
-        
     }
 
     void Start() {
@@ -171,24 +145,12 @@ public class MainGameManager : MonoBehaviour
             timer = levelUpInterval;
             bodyAge.text = string.Format("Year {0} month {1}", currentAge, month);
         } 
-        // else if (timer <= levelUpInterval * 0.8 && !minigameTimeIsSet) 
-        // {
-        //     minigameTimeIsSet = true;
-        //     timeForMinigame = Random.Range(1, 8);
-        // }
-        // else if (minigameTimeIsSet && timer <= timeForMinigame)
-        // {
-        //     RandomGameLoader.instance.notificationButton.gameObject.SetActive(true);
-        //     minigameTimeIsSet = false;
-        //     timeForMinigame = (int)levelUpInterval + 1;
-        // }
-        // // Debug.Log(timer);
-        // Debug.Log(timer);
 
         // Check every 3 months for notification
         if (month % 3 == 0 && month != 0 && !notificationSpawned)
         {
             SpawnNotification();
+            Debug.Log("Notification spawned!");
             notificationSpawned = true;
         }
     }
