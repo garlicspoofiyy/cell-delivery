@@ -1,3 +1,4 @@
+using Unity.Notifications;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -25,7 +26,11 @@ public class RandomGameLoader : MonoBehaviour
 
     public void LoadRandomGame()
     {
+        // Remove the notification button once accepted
+        Destroy(notificationButton.gameObject);
+
         hasWon = false;
+        
         // randomize Game
         int randomIndex = Random.Range(0, gameScenes.Length);
         string randomScene = gameScenes[randomIndex];

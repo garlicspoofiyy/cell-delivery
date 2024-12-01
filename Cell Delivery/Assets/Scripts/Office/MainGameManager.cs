@@ -97,16 +97,6 @@ public class MainGameManager : MonoBehaviour
         dropletSlider.value = droplets;
     }
     
-    // // instance of this class to access from other scenes
-    // public static MainGameManager instance;
-
-    // public void SetDroplets(int amount) {
-    //     droplets = amount;
-    // }
-
-    // public int GetDroplets() {
-    //     return droplets;
-    // }
     public static GameObject persistentObjects;
 
      private void Awake()
@@ -123,25 +113,6 @@ public class MainGameManager : MonoBehaviour
         if (timer <= 0) {
             timer = levelUpInterval;
         }
-
-        // if (instance == null)
-        // {
-        //     instance = this;
-        //     Debug.Log("MainGameManager instance created.");
-        // }
-        // else 
-        // {
-        //     Debug.Log("Duplicate MainGameManager instance destroyed.");
-        //     Destroy(gameObject);
-        //     Debug.Log("Droplets" + droplets);
-        // }
-
-        // set dropletSlidet, rbcSlider, wbcSlider, plateletSlider as gameobjects MaxDroplets, MaxRBC, MaxWBC, MaxPlatelets respectively by finding
-        // dropletSlider = GameObject.Find("MaxDroplets").GetComponent<Slider>();
-        // rbcSlider = GameObject.Find("MaxRBC").GetComponent<Slider>();
-        // wbcSlider = GameObject.Find("MaxWBC").GetComponent<Slider>();
-        // plateletSlider = GameObject.Find("MaxPlatelets").GetComponent<Slider>();
-        
     }
 
     void Start() {
