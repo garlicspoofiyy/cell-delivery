@@ -152,7 +152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notificationButton: {fileID: 0}
-  persistentObjects: {fileID: 0}
 --- !u!4 &6942247
 Transform:
   m_ObjectHideFlags: 0
@@ -4659,7 +4658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popUpMenu: {fileID: 0}
-  onScreenButton: {fileID: 74642885}
+  onScreenButton: {fileID: 0}
 --- !u!58 &1463464014
 CircleCollider2D:
   m_ObjectHideFlags: 0
