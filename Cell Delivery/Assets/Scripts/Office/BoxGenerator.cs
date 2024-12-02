@@ -80,6 +80,15 @@ public class BoxGenerator : MonoBehaviour
                 SetVisible();
             }
         }
+
+        if ((gameObject.name == "WhiteBloodCellGenerator" || 
+            gameObject.name == "RedBloodCellGenerator" || 
+            gameObject.name == "PlateletGenerator") && 
+            currentBox >= 5)
+        {
+            gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        }
+
         //Debug.Log("Time: " + generateBoxTime);
         Debug.Log(String.Format("{0}: ", gameObject.name) + currentBox);
         
@@ -96,6 +105,7 @@ public class BoxGenerator : MonoBehaviour
             MainGameManager.redBloodCellsBoxes = Math.Min(MainGameManager.redBloodCellsBoxes + currentBox, MainGameManager.maxBoxesCapacity); // Example increment
             currentBox = Math.Max(0, currentBox - obtainableResource);
             mainGameManager.updateRemainingRBC();
+            gameObject.transform.localScale = Vector3.zero;
             Debug.Log("Red Blood Cell Currency: " + MainGameManager.redBloodCellsBoxes);
             SetInvisible();
         }
@@ -105,6 +115,7 @@ public class BoxGenerator : MonoBehaviour
             MainGameManager.whiteBloodCellsBoxes = Math.Min(MainGameManager.whiteBloodCellsBoxes + currentBox, MainGameManager.maxBoxesCapacity); // Example increment 
             currentBox = Math.Max(0, currentBox - obtainableResource);
             mainGameManager.updateRemainingWBC();
+            gameObject.transform.localScale = Vector3.zero;
             Debug.Log("White Blood Cell Currency: " + MainGameManager.whiteBloodCellsBoxes );
             SetInvisible();
         }
@@ -114,6 +125,7 @@ public class BoxGenerator : MonoBehaviour
             MainGameManager.plateletsBoxes = Math.Min(MainGameManager.plateletsBoxes + currentBox, MainGameManager.maxBoxesCapacity); // Example increment
             currentBox = Math.Max(0, currentBox - obtainableResource);
             mainGameManager.updateRemainingPlatelet();
+            gameObject.transform.localScale = Vector3.zero;
             Debug.Log("Platelet Currency: " + MainGameManager.plateletsBoxes);
             SetInvisible();
         }
