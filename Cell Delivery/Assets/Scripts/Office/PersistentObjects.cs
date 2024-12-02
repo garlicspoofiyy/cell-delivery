@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PersistentObjects : MonoBehaviour
 {
+    // dont destroy on load objects
     public static PersistentObjects Instance;
 
     void Awake()
