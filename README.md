@@ -21,16 +21,6 @@ These mini-games are inspired by the roles of Red Blood Cells, White Blood Cells
 - **Diverse Mini-Games**: Experience a variety of gameplay styles, from navigating mazes to engaging in classic shooter mechanics.
 - **Strategic and Casual**: Balance strategic thinking with casual gameplay to succeed in each mini-game.
 
-## Codebase
-
-The project is developed in Unity, and the codebase includes various scenes and scripts that bring the game to life. Below are some references to the code blocks used in the project:
-
-- **Maze Game Scene**: 
-  - `Assets/Scenes/Cell Delivery - Maze.unity`
-  - Relevant code lines: 
-    - startLine: 855
-    - endLine: 5768
-
 - **Sorting Game Scene**: 
   - `Assets/Scenes/Cell Delivery - Sorting Game.unity`
   - Relevant code lines: 
