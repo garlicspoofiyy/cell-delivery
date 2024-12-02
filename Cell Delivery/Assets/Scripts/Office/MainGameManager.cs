@@ -153,6 +153,24 @@ public class MainGameManager : MonoBehaviour
             Debug.Log("Notification spawned!");
             notificationSpawned = true;
         }
+        
+        // Check if activeNotifications is not null and set Notification GameObject active/inactive
+        if (activeNotifications != null && activeNotifications.Count > 0)
+        {
+            GameObject notificationObject = GameObject.Find("PersistentObjects/Grid/Computer/Notification");
+            if (notificationObject != null)
+            {
+                notificationObject.SetActive(true);
+            }
+        }
+        else
+        {
+            GameObject notificationObject = GameObject.Find("PersistentObjects/Grid/Computer/Notification");
+            if (notificationObject != null)
+            {
+                notificationObject.SetActive(false);
+            }
+        }
     }
 
     public void UpdateCapacities()
