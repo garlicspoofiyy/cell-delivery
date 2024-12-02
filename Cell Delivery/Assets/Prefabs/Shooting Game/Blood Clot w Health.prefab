@@ -129,8 +129,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 21.08, y: 21.08, z: 21.08}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7243627490324695973}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -175,7 +175,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5a7c4a3a83702704f8ad41fb1654319a, type: 3}
+  m_Sprite: {fileID: 972880486, guid: fab6274015725734db4d61c369ac0203, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -313,9 +313,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18702c20c2724204899195b31c5bea95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficultyLevel: 0
+  difficultyLevel: 2
   basketText: {fileID: 8789577065352377019}
   parentClot: {fileID: 3682345873264788555}
+  explosionPrefab: {fileID: 5521672029190434387, guid: 04ace8989abe1464889912ce4aeac519, type: 3}
 --- !u!1 &4194578772677970610
 GameObject:
   m_ObjectHideFlags: 0

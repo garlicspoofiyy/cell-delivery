@@ -10,6 +10,12 @@ TagManager:
   - Target
   - Bullet Border
   - Border
+  - CollisionObjects
+  - TargetTissueSpawner
+  - TargetTissue
+  - Enemy
+  - SwordHit
+  - BodyMap
   layers:
   - Default
   - TransparentFX

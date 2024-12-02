@@ -10,6 +10,7 @@ public class BoxGenerator : MonoBehaviour
     private int currentBox;
     private const int perOneBoxTimer = 10; // 10 seconds per 1 box
     private float generateBoxTime;
+    public BoxGenerator boxGenerator;
 
     void Awake() {
         // Load saved data when the game starts
@@ -32,10 +33,36 @@ public class BoxGenerator : MonoBehaviour
         PlayerPrefs.SetInt("currentBox", currentBox);
     }
 
-    // Start is called before the first frame update
     void Start()
     {
+        // Disable the renderer to hide the object while keeping its components running
+        Renderer renderer = gameObject.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.enabled = false;
+        }
+        else
+        {
+            Debug.LogWarning($"Renderer component not found on {gameObject.name}.");
+        }
+    }
 
+    public void SetVisible()
+    {
+        Renderer renderer = gameObject.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.enabled = true;
+        }
+    }
+
+    public void SetInvisible()
+    {
+        Renderer renderer = gameObject.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -48,6 +75,10 @@ public class BoxGenerator : MonoBehaviour
             // reset the timer
             generateBoxTime = perOneBoxTimer;
             currentBox = Math.Min(currentBox + 1, maxGeneratingCapacity);
+
+            if (currentBox >= 5) {
+                SetVisible();
+            }
         }
 
         if ((gameObject.name == "WhiteBloodCellGenerator" || 
@@ -60,6 +91,7 @@ public class BoxGenerator : MonoBehaviour
 
         //Debug.Log("Time: " + generateBoxTime);
         Debug.Log(String.Format("{0}: ", gameObject.name) + currentBox);
+        
     }
 
     // Called when the object is clicked
@@ -75,6 +107,7 @@ public class BoxGenerator : MonoBehaviour
             mainGameManager.updateRemainingRBC();
             gameObject.transform.localScale = Vector3.zero;
             Debug.Log("Red Blood Cell Currency: " + MainGameManager.redBloodCellsBoxes);
+            SetInvisible();
         }
         else if (gameObject.name == "WhiteBloodCellGenerator" && currentBox >= 5)
         {
@@ -84,6 +117,7 @@ public class BoxGenerator : MonoBehaviour
             mainGameManager.updateRemainingWBC();
             gameObject.transform.localScale = Vector3.zero;
             Debug.Log("White Blood Cell Currency: " + MainGameManager.whiteBloodCellsBoxes );
+            SetInvisible();
         }
         else if (gameObject.name == "PlateletGenerator" && currentBox >= 5)
         {
@@ -93,6 +127,7 @@ public class BoxGenerator : MonoBehaviour
             mainGameManager.updateRemainingPlatelet();
             gameObject.transform.localScale = Vector3.zero;
             Debug.Log("Platelet Currency: " + MainGameManager.plateletsBoxes);
+            SetInvisible();
         }
     }
 }

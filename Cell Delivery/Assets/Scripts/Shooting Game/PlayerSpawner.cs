@@ -5,7 +5,7 @@ using static UnityEditor.PlayerSettings;
 
 public class PlayerSpawner : MonoBehaviour
 {
-    public static int playerCount = 1;
+    public int playerCount = 1;
     private int lastPlayerCount = 1;
     public GameObject player;
     public GameObject parent;

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class BossManager : MonoBehaviour
 {
-    public GameObject bossPrefab;
+    public GameObject boss;
     public Transform bossSpawnPoint;
     public CameraMovement cameraMovement;
     public SpawnObstacles spawnObstacles;
@@ -27,8 +27,7 @@ public class BossManager : MonoBehaviour
         spawnObstacles.StopSpawning();
         enemySpawner.StopSpawning();
 
-        // Instantiate the boss
-        GameObject boss = Instantiate(bossPrefab, bossSpawnPoint.position, Quaternion.identity);
+        boss.SetActive(true);
 
         // Start boss movement
         StartCoroutine(MoveBossRandomly(boss));

@@ -5,6 +5,7 @@ public class PlayerCollisionHandler : MonoBehaviour
 {
     public LayerMask collisionLayers;
     public Text gameOverText;
+    public GameOverScreen GameOverScreen;
 
     private void Start()
     {
@@ -24,12 +25,7 @@ public class PlayerCollisionHandler : MonoBehaviour
 
     private void GameOver()
     {
-        if (gameOverText != null)
-        {
-            // Set the text to "Game Over" and make it visible
-            gameOverText.text = "Game Over";
-            gameOverText.gameObject.SetActive(true);
-        }
+        GameOverScreen.Setup();
     }
 }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour      
 {
     public float moveSpeed = 3f;  
-    public float damageDealt = 1f; 
+    public float damageDealt = 15f; 
 
     // A delay whenever the enemy is interacted with by the player
     public float fleeDelay = 0.5f;  
@@ -226,6 +226,7 @@ public class Enemy : MonoBehaviour
     private void RemoveEnemy()
     {
         Destroy(gameObject);
+        EnemySpawnerFightingGame.enemiesLeft--;
     }
 }
  

@@ -11,9 +11,13 @@ public class GameManager : MonoBehaviour
     public static int requiredBox = 2;
     private static bool hasWon = false;
     GameObject player;
+    public GameOverScreen gameWinScreen;
+    public GameOverScreen gameOverScreen;
 
     void Start() {
-        player = GameObject.FindWithTag("Player");
+        // set landscape
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+        player = GameObject.FindWithTag("Player"); 
     }
 
     void Update() {
@@ -21,12 +25,14 @@ public class GameManager : MonoBehaviour
             Debug.Log("Game Won!");
             hasWon = true;
             player.GetComponent<PlayerController>().enabled = false;
+            gameWinScreen.Setup();
         }
 
         if (gameOver)
         {
             Debug.Log("Game has ended.");
             player.GetComponent<PlayerController>().enabled = false;
+            gameOverScreen.Setup();
         }
     } 
 }

@@ -8,33 +8,39 @@ public class BossHealthManager : MonoBehaviour
     public enum Difficulty { Easy, Mediocre, Hard }
     public Difficulty difficultyLevel;
 
-    public Text basketText;
-    public Text winText; 
-    private int score;
+    private int health;
+    private int maxHealth;
     public Transform parentClot;
+
+    public GameOverScreen GameOverScreen;
+    public FloatingHealthBar healthBar;
+
+    private void Awake()
+    {
+        healthBar = GetComponentInChildren<FloatingHealthBar>();
+    }
 
     void Start()
     {
-        SetInitialScore();
-        UpdateText();
-        if (winText != null)
-        {
-            winText.text = ""; 
-        }
+        SetInitialHealth();
+        gameObject.SetActive(false);
     }
 
-    void SetInitialScore()
+    void SetInitialHealth()
     {
         switch (difficultyLevel)
         {
             case Difficulty.Easy:
-                score = Random.Range(10, 21); 
+                maxHealth = 10; 
+                health = maxHealth;
                 break;
             case Difficulty.Mediocre:
-                score = Random.Range(20, 31); 
+                maxHealth = 20; 
+                health = maxHealth;
                 break;
             case Difficulty.Hard:
-                score = Random.Range(30, 41); 
+                maxHealth = 30; 
+                health = maxHealth;
                 break;
         }
     }
@@ -43,18 +49,19 @@ public class BossHealthManager : MonoBehaviour
     {
         if (collision.gameObject.name == "Bullet(Clone)")
         {
-            score--;
-            UpdateText();
+            health--;
+            healthBar.UpdateHealthBar(health, maxHealth);
             Destroy(collision.gameObject);
         }
 
-        if (score <= 0)
+        if (health <= 0)
         {
             if (parentClot != null)
             {
                 Destroy(parentClot.gameObject);
             }
-            DisplayWinMessage();
+
+            Cleared();
             
             // Deactivate the collider
             Collider2D collider = GetComponent<Collider2D>();
@@ -62,22 +69,13 @@ public class BossHealthManager : MonoBehaviour
             {
                 collider.enabled = false;
             }
+
+            Destroy(healthBar.gameObject);
         }
     }
 
-    void UpdateText()
+    void Cleared()
     {
-        if (basketText != null)
-        {
-            basketText.text = "" + score.ToString();
-        }
-    }
-
-    void DisplayWinMessage()
-    {
-        if (winText != null)
-        {
-            winText.text = "You Win!";
-        }
+        GameOverScreen.Setup();
     }
 }
