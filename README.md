@@ -21,12 +21,6 @@ These mini-games are inspired by the roles of Red Blood Cells, White Blood Cells
 - **Diverse Mini-Games**: Experience a variety of gameplay styles, from navigating mazes to engaging in classic shooter mechanics.
 - **Strategic and Casual**: Balance strategic thinking with casual gameplay to succeed in each mini-game.
 
-- **Sorting Game Scene**: 
-  - `Assets/Scenes/Cell Delivery - Sorting Game.unity`
-  - Relevant code lines: 
-    - startLine: 1361
-    - endLine: 8273
-
 ## Getting Started
 
 To get started with the project, ensure you have Unity installed on your system. Clone the repository and open the project in Unity to explore and modify the game.
