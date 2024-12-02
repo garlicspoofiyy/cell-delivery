@@ -7,7 +7,7 @@ public class GameFinished : MonoBehaviour
 
     void Update()
     {
-        int count = CountInstances("PF Gate T1 Variant(Clone)");
+        int count = CountInstances("Barrel(Clone)");
 
         if (AmmoSystem.parentTransform.childCount <= 0 && count > 0)
         {
