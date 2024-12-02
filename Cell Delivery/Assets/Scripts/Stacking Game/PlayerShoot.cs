@@ -4,12 +4,7 @@ public class PlayerShoot : MonoBehaviour
 {
     public GameObject plateletPrefab;
     [SerializeField] float shootForce = 10f;
-    private int ammo;
-
-    private void Start()
-    {
-        ammo = AmmoSystem.ammo;
-    }
+    private int ammo = AmmoSystem.ammo;
 
     private void Update()
     {

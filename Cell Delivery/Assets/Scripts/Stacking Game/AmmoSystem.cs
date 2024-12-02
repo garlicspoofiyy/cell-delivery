@@ -2,15 +2,22 @@ using UnityEngine;
 
 public class AmmoSystem : MonoBehaviour
 {
-    // public PlayerShoot player;
+    public PlayerShoot player;
     public GameObject prefabAmmo;
-    public Transform parentTransform;
-    public static int ammo = 10; 
+    public static Transform parentTransform;
+
+    public static int ammo;
+
+    private void Awake()
+    {
+        parentTransform = GameObject.Find("Ammo").transform;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        // float posY = transform.position.y; // Place verticall
+        ammo = 10;
+        // float posY = transform.position.y; // Place vertically
         float posX = transform.position.x; // Place horizontally
 
         for (int i = ammo; i > 0; i--) 
@@ -34,8 +41,7 @@ public class AmmoSystem : MonoBehaviour
     {
         if (parentTransform.childCount > 0)
         {
-            // Destroy the first child
             Destroy(parentTransform.GetChild(0).gameObject);
-        }
+        } 
     }
 }
