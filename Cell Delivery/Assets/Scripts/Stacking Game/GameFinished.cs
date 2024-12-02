@@ -20,7 +20,7 @@ public class GameFinished : MonoBehaviour
         }
     }
 
-    // Count the number of baskets
+    // Count the number of basket
     int CountInstances(string name)
     {
         GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
