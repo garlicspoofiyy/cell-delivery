@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3629131866073127903}
   - component: {fileID: 1483535082215939426}
   m_Layer: 20
-  m_Name: PF Props Barrel
+  m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

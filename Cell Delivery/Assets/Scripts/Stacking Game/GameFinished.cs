@@ -7,7 +7,7 @@ public class GameFinished : MonoBehaviour
 
     void Update()
     {
-        int count = CountInstances("PF Gate T1 Variant(Clone)");
+        int count = CountInstances("Barrel(Clone)");
 
         if (AmmoSystem.parentTransform.childCount <= 0 && count > 0)
         {
@@ -20,7 +20,7 @@ public class GameFinished : MonoBehaviour
         }
     }
 
-    // Count the number of baskets
+    // Count the number of basket
     int CountInstances(string name)
     {
         GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
