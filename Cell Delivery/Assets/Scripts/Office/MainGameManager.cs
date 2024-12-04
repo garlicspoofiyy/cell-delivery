@@ -63,7 +63,7 @@ public class MainGameManager : MonoBehaviour
     // Notification management
     public GameObject notificationPrefab; 
     public RectTransform bodyMap; 
-    private List<GameObject> activeNotifications = new List<GameObject>();
+    public static List<GameObject> activeNotifications = new List<GameObject>();
     private bool notificationSpawned = false;
 
     // texts
@@ -153,6 +153,8 @@ public class MainGameManager : MonoBehaviour
             Debug.Log("Notification spawned!");
             notificationSpawned = true;
         }
+
+        Debug.Log("Active notifications: " + activeNotifications.Count);
         
         // Check if activeNotifications is not null and set Notification GameObject active/inactive
         if (activeNotifications != null && activeNotifications.Count > 0)

@@ -29,6 +29,9 @@ public class RandomGameLoader : MonoBehaviour
         // Remove the notification button once accepted
         Destroy(notificationButton.gameObject);
 
+        // Remove the notification button from the active notifications list
+        MainGameManager.activeNotifications.Remove(notificationButton.gameObject);
+
         hasWon = false;
         
         // randomize Game
