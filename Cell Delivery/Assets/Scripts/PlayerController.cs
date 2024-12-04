@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
+// This player controller is used in the Maze Game and Sorting Game
+
 public class PlayerController : MonoBehaviour
 {   
     public JoystickMovement joystickMovement;
