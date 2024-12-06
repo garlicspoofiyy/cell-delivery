@@ -679,7 +679,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 20185057}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: LoadMazeGame
+        m_MethodName: LoadOffice
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
