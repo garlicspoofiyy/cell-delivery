@@ -39,9 +39,6 @@ public class ObstacleInteraction : MonoBehaviour
 
             // set gamefinished in timer as true, this will stop the clock
             DodgingGameTimer.gameFinished = true;
-
-            // stop spawning after losing
-            ObstacleSpawner.obstacleSpawner.StopSpawning();
         }
     }
 }

@@ -10,6 +10,13 @@ public class DodgingGameTimer : MonoBehaviour
     [SerializeField] TextMeshProUGUI timerText;
     float countdownFrom = 30f;
     public static bool gameFinished;
+    public GameObject player;
+
+    void Awake()
+    {
+        //find player object
+        player = GameObject.FindWithTag("Player");
+    }
 
     void Start()
     {
@@ -23,6 +30,7 @@ public class DodgingGameTimer : MonoBehaviour
         } else if (countdownFrom <= 0) {
             timerText.color = Color.green;
             DodgingGameManager.hasWon = true;
+            player.GetComponent<PolygonCollider2D>().enabled = false;
         } else {
             countdownFrom -= Time.deltaTime;
         }
