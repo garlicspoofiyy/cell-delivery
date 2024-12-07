@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,11 +9,16 @@ public class GameManager : MonoBehaviour
     public static bool gameOver = false;
     public static bool oxygenDone = false;
     public static bool Co2Done = false;
-    public static int requiredBox = 2;
+    public static int requiredBox;
     private static bool hasWon = false;
     GameObject player;
     public GameOverScreen gameWinScreen;
     public GameOverScreen gameOverScreen;
+
+    void Awake()
+    {
+        requiredBox = Math.Max(3, 3 + MainGameManager.currentAge / 5);
+    }
 
     void Start() {
         // set landscape

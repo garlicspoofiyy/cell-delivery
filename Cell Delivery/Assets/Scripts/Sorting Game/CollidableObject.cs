@@ -120,7 +120,7 @@ public class CollidableObject : MonoBehaviour
 
     private void DropObject()
     {
-        transform.localPosition = new Vector3(0.5f, 0.0f, 0);
+        transform.localPosition = new Vector3(0.0f, 1.0f, 0);
 
         // reset the parent of the object currently being carried
         transform.SetParent(null);
