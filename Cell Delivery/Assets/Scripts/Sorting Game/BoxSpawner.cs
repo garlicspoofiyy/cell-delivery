@@ -1,38 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class BoxSpawner : MonoBehaviour
 {
     public GameObject oxygenBox;
     public GameObject carbonDioxideBox;
-    public Vector2 topLeftCorner; // top left corner of spawn area
-    public Vector2 bottomRightCorner; // bottom right corner of spawn area
+    public Tilemap tilemap; // Reference to the specific tilemap
     public int boxCount = GameManager.requiredBox;
 
     // Start is called before the first frame update
     void Start()
     {
-
         SpawnBoxes();
     }
 
-    void SpawnBoxes() {
-        for (int i = 0; i < boxCount * 2; i++){
+    void SpawnBoxes()
+    {
+        int spawnedBoxes = 0;
+
+        while (spawnedBoxes < boxCount * 2)
+        {
             // Random X and Y within the bounds
-            float randomX = Random.Range(topLeftCorner.x, bottomRightCorner.x);
-            float randomY = Random.Range(topLeftCorner.y, bottomRightCorner.y);
+            float randomX = Random.Range(tilemap.cellBounds.xMin, tilemap.cellBounds.xMax);
+            float randomY = Random.Range(tilemap.cellBounds.yMin, tilemap.cellBounds.yMax);
 
-            // Create the random position
-            Vector2 spawnPosition = new Vector2(randomX, randomY);
+            // Convert random position to cell position
+            Vector3Int cellPosition = tilemap.WorldToCell(new Vector3(randomX, randomY, 0));
 
-            // Instantiate the box prefab at the random position
-            if (i % 2 == 0) {
-                Instantiate(carbonDioxideBox, spawnPosition, Quaternion.identity);
-            } else {
-                Instantiate(oxygenBox, spawnPosition, Quaternion.identity);
+            // Check if there's a valid tile at the cell position
+            if (tilemap.HasTile(cellPosition))
+            {
+                // Convert cell position back to world position
+                Vector3 spawnPosition = tilemap.GetCellCenterWorld(cellPosition);
+
+                // Instantiate the box prefab at the position
+                if (spawnedBoxes % 2 == 0)
+                {
+                    Instantiate(carbonDioxideBox, spawnPosition, Quaternion.identity);
+                }
+                else
+                {
+                    Instantiate(oxygenBox, spawnPosition, Quaternion.identity);
+                }
+
+                spawnedBoxes++;
             }
-            
         }
     }
 }

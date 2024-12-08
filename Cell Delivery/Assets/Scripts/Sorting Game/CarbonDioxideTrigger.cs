@@ -11,6 +11,12 @@ public class CarbonDioxideTrigger : MonoBehaviour
     private float co2Time = 45f;
     private bool resetTimer;
     int counter = GameManager.requiredBox;
+    Animator animator;
+
+    void Awake()
+    {
+        animator = this.gameObject.GetComponent<Animator>();
+    }
 
     void Start()
     {
@@ -53,13 +59,22 @@ public class CarbonDioxideTrigger : MonoBehaviour
         }
     }
 
+    IEnumerator ResetReceivedAfterAnimation()
+    {
+        // Wait until the animation finishes
+        yield return new WaitForSeconds(1);
+        animator.SetBool("co2_receiving", false);
+    }
+
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("CarbonDioxide")) 
         {
             resetTimer = true;
             Debug.Log("+1" + other.name);
+            animator.SetBool("co2_receiving", true);
             counter -= 1;
+            StartCoroutine(ResetReceivedAfterAnimation());
             Destroy(other.gameObject);
             if (counter == 0) {
                 GameManager.Co2Done = true;
