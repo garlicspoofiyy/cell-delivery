@@ -10,9 +10,14 @@ public class OxygenTrigger : MonoBehaviour
     public TextMeshProUGUI timerText;
     private float oxygenTime = 45f;
     private bool resetTimer;
-    
-    public GameObject player;
+    Animator animator;
+
     int counter = GameManager.requiredBox;
+    
+    void Awake()
+    {
+        animator = this.gameObject.GetComponent<Animator>();
+    }
 
     void Start()
     {
@@ -55,6 +60,13 @@ public class OxygenTrigger : MonoBehaviour
         }
     }
 
+    IEnumerator ResetReceivedAfterAnimation()
+    {
+        // Wait until the animation finishes
+        yield return new WaitForSeconds(1);
+        animator.SetBool("received", false);
+    }
+
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Oxygen")) 
@@ -62,6 +74,8 @@ public class OxygenTrigger : MonoBehaviour
             resetTimer = true;
             Debug.Log("+1 " + other.name);
             counter -= 1;
+            animator.SetBool("received", true);
+            StartCoroutine(ResetReceivedAfterAnimation());
             Destroy(other.gameObject);
             if (counter == 0) {
                 GameManager.oxygenDone = true;

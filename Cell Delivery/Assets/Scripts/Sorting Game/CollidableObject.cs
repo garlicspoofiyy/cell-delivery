@@ -19,11 +19,11 @@ public class CollidableObject : MonoBehaviour
     private GameObject player; // assign player object
 
     public Button onScreenButton; // assign UI button in the Inspector
-    private static bool isCarrying = false;
+    public static bool isCarrying;
 
     private void Start()
     {
-
+        isCarrying = false;
         player = GameObject.FindWithTag("Player");
         GameObject button = GameObject.FindWithTag("Button");
         onScreenButton = button.GetComponent<Button>();
@@ -120,7 +120,7 @@ public class CollidableObject : MonoBehaviour
 
     private void DropObject()
     {
-        transform.localPosition = new Vector3(0.0f, 1.0f, 0);
+        transform.localPosition = new Vector3(0.0f, 0.5f, 0);
 
         // reset the parent of the object currently being carried
         transform.SetParent(null);
@@ -133,9 +133,4 @@ public class CollidableObject : MonoBehaviour
         isCarrying = false;
         Debug.Log("Object dropped!");
     }
-
-    // private void OnCollided(GameObject collidedObject)
-    // {
-        
-    // }
 }
