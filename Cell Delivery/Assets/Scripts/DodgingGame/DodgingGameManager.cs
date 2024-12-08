@@ -28,10 +28,12 @@ public class DodgingGameManager : MonoBehaviour
     {
         if (hasLost) {
             gameOverScreen.Setup();
+            ObstacleSpawner.obstacleSpawner.StopSpawning();
             // movingBackground.SetActive(false);
             // replacementBackground.SetActive(true);
         } else if (hasWon) {
             gameWonScreen.Setup();
+            ObstacleSpawner.obstacleSpawner.StopSpawning();
         }
     }
 }
