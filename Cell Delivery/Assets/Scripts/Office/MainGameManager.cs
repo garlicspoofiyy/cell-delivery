@@ -102,7 +102,7 @@ public class MainGameManager : MonoBehaviour
      private void Awake()
     {
         // to reset the data, uncomment the line below
-        // PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
         // Load saved data when the game starts
         LoadData();
         
