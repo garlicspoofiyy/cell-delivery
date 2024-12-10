@@ -32,6 +32,11 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene("StackingGame");
     }
 
+    public void LoadDodgingGame()
+    {
+        SceneManager.LoadScene("DodgingGame");
+    }
+
     public void LoadOffice()
     {
         SceneManager.LoadScene("Office");
@@ -40,5 +45,10 @@ public class MenuController : MonoBehaviour
     public void LoadMenu()
     {
         SceneManager.LoadScene("Menu");
+    }
+
+    public void LoadMiniGames()
+    {
+        SceneManager.LoadScene("Minigames");
     }
 }
