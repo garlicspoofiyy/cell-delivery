@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 9a0cd4d9024035647a6f865fe8316da0
+  - enabled: 1
     path: Assets/Scenes/Cell Delivery - Maze.unity
     guid: 655316362477c72488e625b8fc39586b
   - enabled: 1
@@ -17,9 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FightingGame.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
-  - enabled: 1
-    path: Assets/Scenes/Menu.unity
-    guid: 9a0cd4d9024035647a6f865fe8316da0
   - enabled: 1
     path: Assets/Scenes/ShootingGame.unity
     guid: 34cddb598ccbf3c42a1803f764e3bbe2
