@@ -4182,7 +4182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 2657669330712323540, guid: 11c1e37db0784384d9ef916e4d05b46e, type: 3}
-  numberOfPrefabs: 3
+  numberOfPrefabs: 1
   spacing: 5
 --- !u!1 &1561831253
 GameObject:
