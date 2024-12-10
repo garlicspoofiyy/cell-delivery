@@ -44,10 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18776c9d4cbca6245bbc1658b0b1a083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tissuePrefab: {fileID: 5062391774758163918}
-  distanceBetween: 2
-  tilemap: {fileID: 0}
-  numberOfSpawns: 3
+  spawnTilemap: {fileID: 0}
+  objectToSpawn: {fileID: 0}
+  numberOfObjects: 3
+  minDistance: 2
+  borderMargin: 2
 --- !u!1 &5062391774758163918
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,4 +185,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 9
   delayBetweenDamage: 3
-  enemy: {fileID: 0}
+  healthBar: {fileID: 0}
