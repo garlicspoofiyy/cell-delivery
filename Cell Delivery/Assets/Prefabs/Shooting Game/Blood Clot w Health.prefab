@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18702c20c2724204899195b31c5bea95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficultyLevel: 2
+  difficultyLevel: 0
   basketText: {fileID: 8789577065352377019}
   parentClot: {fileID: 3682345873264788555}
   explosionPrefab: {fileID: 5521672029190434387, guid: 04ace8989abe1464889912ce4aeac519, type: 3}
