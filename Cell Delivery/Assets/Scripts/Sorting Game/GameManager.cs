@@ -3,13 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
     public static bool gameOver = false;
     public static bool oxygenDone = false;
     public static bool Co2Done = false;
-    public static int requiredBox;
+    public static int co2boxes;
+    public static int oxygenboxes;
     private static bool hasWon = false;
     GameObject player;
     public GameOverScreen gameWinScreen;
@@ -17,7 +19,8 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        requiredBox = Math.Max(3, 3 + MainGameManager.currentAge / 5);
+        co2boxes = 4;
+        oxygenboxes = 4;
     }
 
     void Start() {
@@ -30,7 +33,7 @@ public class GameManager : MonoBehaviour
         if (oxygenDone && Co2Done && !hasWon) {
             Debug.Log("Game Won!");
             hasWon = true;
-            player.GetComponent<PlayerController>().enabled = false;
+            player.GetComponent<PlayerInput>().enabled = false;
             gameWinScreen.Setup();
         }
 

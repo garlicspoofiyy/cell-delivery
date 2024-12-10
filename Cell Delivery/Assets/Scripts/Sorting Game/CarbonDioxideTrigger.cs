@@ -8,9 +8,8 @@ public class CarbonDioxideTrigger : MonoBehaviour
 {
     public Slider timerSlider;
     public TextMeshProUGUI timerText;
-    private float co2Time = 45f;
+    private float co2Time;
     private bool resetTimer;
-    int counter = GameManager.requiredBox;
     Animator animator;
 
     void Awake()
@@ -20,6 +19,7 @@ public class CarbonDioxideTrigger : MonoBehaviour
 
     void Start()
     {
+        co2Time = 45f;
         GameManager.gameOver = false;
         resetTimer = false;
         timerSlider.maxValue = co2Time;
@@ -73,13 +73,15 @@ public class CarbonDioxideTrigger : MonoBehaviour
             resetTimer = true;
             Debug.Log("+1" + other.name);
             animator.SetBool("co2_receiving", true);
-            counter -= 1;
+            // counter for co2 boxes
+            GameManager.co2boxes -= 1;
+
             StartCoroutine(ResetReceivedAfterAnimation());
             Destroy(other.gameObject);
-            if (counter == 0) {
+            if (GameManager.co2boxes == 0) {
                 GameManager.Co2Done = true;
             }
-            Debug.Log(counter);
+            Debug.Log(GameManager.co2boxes);
         }
     }
 }

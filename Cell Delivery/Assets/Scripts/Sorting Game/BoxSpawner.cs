@@ -8,7 +8,6 @@ public class BoxSpawner : MonoBehaviour
     public GameObject oxygenBox;
     public GameObject carbonDioxideBox;
     public Tilemap tilemap; // Reference to the specific tilemap
-    public int boxCount = GameManager.requiredBox;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +19,7 @@ public class BoxSpawner : MonoBehaviour
     {
         int spawnedBoxes = 0;
 
-        while (spawnedBoxes < boxCount * 2)
+        while (spawnedBoxes < GameManager.co2boxes * 2)
         {
             // Random X and Y within the bounds
             float randomX = Random.Range(tilemap.cellBounds.xMin, tilemap.cellBounds.xMax);

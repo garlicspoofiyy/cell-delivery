@@ -16,6 +16,8 @@ TagManager:
   - Enemy
   - SwordHit
   - BodyMap
+  - Floor
+  - Floor1
   layers:
   - Default
   - TransparentFX
