@@ -45,8 +45,19 @@ public class GameOverScreen : MonoBehaviour
         MainGameManager.droplets = Math.Min(MainGameManager.maxDropletsCapacity, MainGameManager.droplets + 10);
         Debug.Log("Updated droplets: " + MainGameManager.droplets);
 
+        // add boxes
+        Debug.Log("Current RBC: " + MainGameManager.redBloodCellsBoxes);
+        MainGameManager.redBloodCellsBoxes = Math.Min(MainGameManager.maxBoxesCapacity, MainGameManager.redBloodCellsBoxes + 10);
+        Debug.Log("Updated RBC: " + MainGameManager.redBloodCellsBoxes);
+        MainGameManager.whiteBloodCellsBoxes = Math.Min(MainGameManager.maxBoxesCapacity, MainGameManager.whiteBloodCellsBoxes + 10);
+        MainGameManager.plateletsBoxes = Math.Min(MainGameManager.maxBoxesCapacity, MainGameManager.plateletsBoxes + 10);
+
+        // save changess
         PlayerPrefs.SetInt("droplets", MainGameManager.droplets);
-        
+        PlayerPrefs.SetInt("redBloodCellsBoxes", MainGameManager.redBloodCellsBoxes);
+        PlayerPrefs.SetInt("whiteBloodCellsBoxes", MainGameManager.whiteBloodCellsBoxes);
+        PlayerPrefs.SetInt("plateletsBoxes", MainGameManager.plateletsBoxes);
+
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         MainGameManager mainGameManager = FindObjectOfType<MainGameManager>();
         mainGameManager.UpdateSliders();
