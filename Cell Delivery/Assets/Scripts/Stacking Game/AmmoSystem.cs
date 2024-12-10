@@ -17,7 +17,6 @@ public class AmmoSystem : MonoBehaviour
     void Start()
     {
         ammo = 10;
-        // float posY = transform.position.y; // Place vertically
         float posX = transform.position.x; // Place horizontally
 
         for (int i = ammo; i > 0; i--) 
@@ -31,9 +30,10 @@ public class AmmoSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && PlayerShoot.canShoot)
         { 
             DestroyChild();
+            ammo--;
         }
     }
 
