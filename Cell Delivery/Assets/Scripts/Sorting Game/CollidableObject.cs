@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.OnScreen;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 public class CollidableObject : MonoBehaviour
@@ -20,6 +21,13 @@ public class CollidableObject : MonoBehaviour
 
     public Button onScreenButton; // assign UI button in the Inspector
     public static bool isCarrying;
+
+    Tilemap floor;
+
+    private void Awake()
+    {
+        floor = GameObject.FindWithTag("Floor").GetComponent<Tilemap>();
+    }
 
     private void Start()
     {
@@ -120,17 +128,34 @@ public class CollidableObject : MonoBehaviour
 
     private void DropObject()
     {
-        transform.localPosition = new Vector3(0.0f, 0.5f, 0);
+        Vector3 localDropPosition = new Vector3(0.0f, 0.5f, 0);
 
-        // reset the parent of the object currently being carried
-        transform.SetParent(null);
+        // Convert local position to world position
+        Vector3 worldDropPosition = transform.TransformPoint(localDropPosition);
 
-        // unhide the object's sprite and reenable collider
-        GetComponent<SpriteRenderer>().enabled = true;
-        GetComponent<BoxCollider2D>().enabled = true;  
-        GetComponent<CircleCollider2D>().enabled = true;  
+        // Convert world position to grid position
+        Vector3Int gridPosition = floor.WorldToCell(worldDropPosition);
 
-        isCarrying = false;
-        Debug.Log("Object dropped!");
+        // Check if there's a tile at the grid position
+        if (floor.GetTile(gridPosition) != null)
+        {
+            // Valid position, drop the object
+            transform.localPosition = localDropPosition;
+
+            // Reset the parent of the object currently being carried
+            transform.SetParent(null);
+
+            // Unhide the object's sprite and re-enable colliders
+            GetComponent<SpriteRenderer>().enabled = true;
+            GetComponent<BoxCollider2D>().enabled = true;
+            GetComponent<CircleCollider2D>().enabled = true;
+
+            isCarrying = false;
+            Debug.Log("Object dropped!");
+        }
+        else
+        {
+            Debug.Log("Cannot drop object: Invalid position.");
+        }
     }
 }

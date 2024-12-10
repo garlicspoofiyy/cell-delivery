@@ -8,11 +8,9 @@ public class OxygenTrigger : MonoBehaviour
 {
     public Slider timerSlider;
     public TextMeshProUGUI timerText;
-    private float oxygenTime = 45f;
+    private float oxygenTime;
     private bool resetTimer;
     Animator animator;
-
-    int counter = GameManager.requiredBox;
     
     void Awake()
     {
@@ -21,6 +19,7 @@ public class OxygenTrigger : MonoBehaviour
 
     void Start()
     {
+        oxygenTime = 45f;
         GameManager.gameOver = false;
         resetTimer = false;
         timerSlider.maxValue = oxygenTime;
@@ -73,14 +72,14 @@ public class OxygenTrigger : MonoBehaviour
         {
             resetTimer = true;
             Debug.Log("+1 " + other.name);
-            counter -= 1;
+            GameManager.oxygenboxes -= 1;
             animator.SetBool("received", true);
             StartCoroutine(ResetReceivedAfterAnimation());
             Destroy(other.gameObject);
-            if (counter == 0) {
+            if (GameManager.oxygenboxes == 0) {
                 GameManager.oxygenDone = true;
             }
-            Debug.Log(counter);
+            Debug.Log(GameManager.oxygenboxes);
         }
     }
 }
