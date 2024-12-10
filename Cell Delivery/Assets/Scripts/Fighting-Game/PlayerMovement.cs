@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovementFightingGame : MonoBehaviour
 {
+
+    public JoystickMovement joystickMovement;
+
     public float moveSpeed = 3f;
     // Offset for collision detection to avoid clipping
     public float collisionOffset = 0.05f; 
@@ -48,8 +51,17 @@ public class PlayerMovementFightingGame : MonoBehaviour
             }
             animator.SetBool("isMoving", success);
         }
-        else
-        {
+        else if (joystickMovement.joystickVec.y != 0) {
+            bool success = TryMove(joystickMovement.joystickVec);
+            if (!success) {
+                success = TryMove(new Vector2(joystickMovement.joystickVec.x, 0));
+            }
+
+            if (!success) {
+                success = TryMove(new Vector2(0, joystickMovement.joystickVec.y));
+            }
+            animator.SetBool("isMoving", success);
+        } else {
             animator.SetBool("isMoving", false);
         }
 

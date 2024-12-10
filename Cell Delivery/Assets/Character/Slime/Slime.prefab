@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecb51819a6d709545b442dfc4440b1df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageReceived: 3
 --- !u!58 &8453676796019677856
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -205,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 7272647755033365208}
-  numberOfSpawns: 0
+  spawnerPoints: []
 --- !u!1 &7272647755033365208
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +287,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -38084008, guid: 8298854039ac8a84398f8ee4c61daa2e, type: 3}
+  m_Sprite: {fileID: -1859303930, guid: afef84b7f780010449037b285fbc4dc5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -337,8 +338,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  damage: 3
+  damageDealt: 1
+  fleeDelay: 0.5
   health: 9
+  playerInRange: 0
+  healthBar: {fileID: 0}
 --- !u!95 &8314585821236009747
 Animator:
   serializedVersion: 5
