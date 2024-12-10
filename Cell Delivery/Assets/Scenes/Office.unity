@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -630,7 +630,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -802,8 +802,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 833, y: 369}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 262.55716, y: 110}
+  m_SizeDelta: {x: 50, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &314691779
 MonoBehaviour:
@@ -998,8 +998,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1693558439
-  m_SortingLayer: 4
+  m_SortingLayerID: -1752081857
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -1749851327, guid: 22f6fc2c4f36c34428edb860287acf49, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2969,7 +2969,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -3200,7 +3200,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 513, y: 504}
+  m_AnchoredPosition: {x: 191.79266, y: 213.26457}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &798628687
@@ -3250,8 +3250,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3286,7 +3286,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 2.4212952, y: 14.527686, z: -67.49174, w: 0}
+  m_margin: {x: 52.643795, y: 14.527686, z: 49.94527, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3335,8 +3335,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 833, y: 278.7151}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 262.55728, y: 80}
+  m_SizeDelta: {x: 50, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &804513717
 MonoBehaviour:
@@ -3606,8 +3606,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1693558439
-  m_SortingLayer: 4
+  m_SortingLayerID: -1752081857
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -56094520, guid: 22f6fc2c4f36c34428edb860287acf49, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4009,7 +4009,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d3d6debe1dfe8614291c11abb2709ea5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 47814e7f1a5da374198ac141b1b8bfa9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4062,8 +4062,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 833, y: 108.5625}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 262.55716, y: 20}
+  m_SizeDelta: {x: 50, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1121957971
 MonoBehaviour:
@@ -4164,7 +4164,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -6405,8 +6405,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 833, y: 191.90259}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 262.55722, y: 50}
+  m_SizeDelta: {x: 50, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1762553275
 MonoBehaviour:
@@ -6723,7 +6723,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -8.890015, y: 2.4299927, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -6815,7 +6815,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.125, y: 1.5}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -6919,7 +6919,7 @@ SpriteRenderer:
   m_SortingLayerID: -1752081857
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1927977027, guid: 3b0cbbcf808028241a0cb7faff0ce05d, type: 3}
+  m_Sprite: {fileID: -991010406, guid: 0bdcb5808089b84449d4cdbb4b9c2aa8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7072,8 +7072,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1693558439
-  m_SortingLayer: 4
+  m_SortingLayerID: -1752081857
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 1112205714, guid: 22f6fc2c4f36c34428edb860287acf49, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7278,6 +7278,14 @@ PrefabInstance:
       propertyPath: joystickMovement
       value: 
       objectReference: {fileID: 1552201606}
+    - target: {fileID: 1846016141716813424, guid: cdbe7d7e78aece54c8666a34ccb3a4bb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1846016141716813424, guid: cdbe7d7e78aece54c8666a34ccb3a4bb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1846016141716813424, guid: cdbe7d7e78aece54c8666a34ccb3a4bb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.89
