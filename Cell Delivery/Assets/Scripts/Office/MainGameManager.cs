@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -13,10 +14,8 @@ public class MainGameManager : MonoBehaviour
     /// 
     /// Game elements
     /// 
-    private const float levelUpInterval = 10;
+    private const float levelUpInterval = 5f;
     private float timer;
-    private bool minigameTimeIsSet;
-    private int timeForMinigame;
 
     /// 
     /// player attributes and core
@@ -70,11 +69,6 @@ public class MainGameManager : MonoBehaviour
     public TextMeshProUGUI bodyAge;
     public Canvas slidersCanvas;
 
-
-    public void ToggleCanvas() {
-        slidersCanvas.enabled = !slidersCanvas.enabled;
-    }
-
     public void updateRemainingRBC() {
         rbcSlider.maxValue = maxBoxesCapacity;
         rbcSlider.value = redBloodCellsBoxes;
@@ -99,10 +93,10 @@ public class MainGameManager : MonoBehaviour
     
     public static GameObject persistentObjects;
 
-     private void Awake()
+    private void Awake()
     {
         // to reset the data, uncomment the line below
-        PlayerPrefs.DeleteAll();
+        // PlayerPrefs.DeleteAll();
         // Load saved data when the game starts
         LoadData();
         
@@ -113,17 +107,21 @@ public class MainGameManager : MonoBehaviour
         if (timer <= 0) {
             timer = levelUpInterval;
         }
+
+                
+        var inputSystem = FindObjectOfType<UnityEngine.InputSystem.PlayerInput>();
+        if (inputSystem != null)
+        {
+            inputSystem.enabled = false;
+            inputSystem.enabled = true; // Reset the input system
+            Debug.Log("Input system enabled");
+        }
     }
 
     void Start() {
-        // start the game in landscape mode
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
 
         // sliders
         UpdateSliders();
-
-        minigameTimeIsSet = false;
-        timeForMinigame = (int)levelUpInterval + 1;
     }
     
     // whenever a minigame is finished, update the sliders
@@ -147,7 +145,7 @@ public class MainGameManager : MonoBehaviour
         } 
 
         // Check every 3 months for notification
-        if (month % 3 == 0 && month != 0 && !notificationSpawned)
+        if (month % 2 == 0 && month != 0 && !notificationSpawned)
         {
             SpawnNotification();
             Debug.Log("Notification spawned!");

@@ -16,7 +16,8 @@ public class GameOverScreen : MonoBehaviour
     public void Return()
     {
         // find resource canvas and enable it
-        MainGameManager.persistentObjects.SetActive(true);;
+        GameObject toBeDisabled = MainGameManager.persistentObjects.transform.Find("ToBeDisabled").gameObject;
+        toBeDisabled.SetActive(true);
 
         // subtract boxes
         Debug.Log("Current RBC: " + MainGameManager.redBloodCellsBoxes);
@@ -39,7 +40,8 @@ public class GameOverScreen : MonoBehaviour
 
     public void ReturnOnWin() 
     {
-        MainGameManager.persistentObjects.SetActive(true);
+        GameObject toBeDisabled = MainGameManager.persistentObjects.transform.Find("ToBeDisabled").gameObject;
+        toBeDisabled.SetActive(true);
 
         Debug.Log("Current droplets: " + MainGameManager.droplets);
         MainGameManager.droplets = Math.Min(MainGameManager.maxDropletsCapacity, MainGameManager.droplets + 10);

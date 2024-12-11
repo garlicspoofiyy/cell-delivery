@@ -1,5 +1,6 @@
 using Unity.Notifications;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -41,8 +42,9 @@ public class RandomGameLoader : MonoBehaviour
 
         Debug.Log("Random game: " + randomScene);
 
-        // Set slider canvas inactive
-        MainGameManager.persistentObjects.SetActive(false);
+        // Access a child gameobject of persistentObjects named "ToBeDisabled"
+        GameObject toBeDisabled = MainGameManager.persistentObjects.transform.Find("ToBeDisabled").gameObject;
+        toBeDisabled.SetActive(false);
 
         // load the game
         SceneManager.LoadScene(randomScene);
