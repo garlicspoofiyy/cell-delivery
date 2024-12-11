@@ -21,7 +21,8 @@ public class RandomGameLoader : MonoBehaviour
         "Cell Delivery - Sorting Game",
         "FightingGame",
         "ShootingGame",
-        "StackingGame"
+        "StackingGame",
+        "DodgingGame"
     };
 
     public void LoadRandomGame()
