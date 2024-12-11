@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         if (gameOver)
         {
             Debug.Log("Game has ended.");
-            player.GetComponent<PlayerController>().enabled = false;
+            player.GetComponent<PlayerInput>().enabled = false;
             gameOverScreen.Setup();
         }
     } 

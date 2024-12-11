@@ -22,16 +22,18 @@ public class JoystickMovement : MonoBehaviour, IDragHandler, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        // Update the joystick background to the touch position
-        joystickTouchPos = eventData.position;
-        joystickBG.transform.position = joystickTouchPos;
-        joystick.transform.position = joystickTouchPos;
-
-        isDragging = true;
+        // Check if the touch is within the joystick radius
+        if (Vector2.Distance(eventData.position, joystickOriginalPos) <= joystickRadius)
+        {
+            isDragging = true;
+            joystickTouchPos = joystickOriginalPos;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (!isDragging) return;
+
         // Calculate the direction and position
         Vector2 dragPos = eventData.position;
         joystickVec = (dragPos - joystickTouchPos).normalized;
@@ -49,10 +51,10 @@ public class JoystickMovement : MonoBehaviour, IDragHandler, IPointerDownHandler
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        // Reset joystick to the original position
-        joystickBG.transform.position = joystickOriginalPos;
-        joystick.transform.position = joystickOriginalPos;
+        if (!isDragging) return;
 
+        // Reset joystick to the original position
+        joystick.transform.position = joystickOriginalPos;
         joystickVec = Vector2.zero;
         isDragging = false;
     }

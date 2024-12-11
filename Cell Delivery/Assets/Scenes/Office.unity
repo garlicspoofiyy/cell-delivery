@@ -3366,8 +3366,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190208
+  m_fontColor: {r: 0.5, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7264,6 +7264,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 126639218418034930, guid: 37a53afe9cb225e4c936b0569b0cb043, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 126639218418034930, guid: 37a53afe9cb225e4c936b0569b0cb043, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 126639218418034930, guid: 37a53afe9cb225e4c936b0569b0cb043, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1956564698054541815, guid: 37a53afe9cb225e4c936b0569b0cb043, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -7274,11 +7286,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3280814553228018634, guid: 37a53afe9cb225e4c936b0569b0cb043, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -265
+      value: -271.453
       objectReference: {fileID: 0}
     - target: {fileID: 3280814553228018634, guid: 37a53afe9cb225e4c936b0569b0cb043, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -65
+      value: -72.82052
       objectReference: {fileID: 0}
     - target: {fileID: 4302828207993316374, guid: 37a53afe9cb225e4c936b0569b0cb043, type: 3}
       propertyPath: m_UiScaleMode
