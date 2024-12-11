@@ -1,71 +1,61 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro.Examples;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 
-public class JoystickMovement : MonoBehaviour
+public class JoystickMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
-
     public GameObject joystick;
     public GameObject joystickBG;
+
     public Vector2 joystickVec;
     public Vector2 joystickTouchPos;
     public Vector2 joystickOriginalPos;
+
     private float joystickRadius;
     private bool isDragging = false;
 
-
-    // Start is called once per frame
     void Start()
     {
+        // Initialize joystick position
         joystickOriginalPos = joystickBG.transform.position;
-        joystickRadius = joystickBG.GetComponent<RectTransform>().sizeDelta.y;
+        joystickRadius = joystickBG.GetComponent<RectTransform>().sizeDelta.x / 1.1f;
     }
 
-    public void PointerDown() 
+    public void OnPointerDown(PointerEventData eventData)
     {
-        if (RectTransformUtility.RectangleContainsScreenPoint(
-            joystickBG.GetComponent<RectTransform>(), 
-            Input.mousePosition, 
-            null))
+        // Check if the touch is within the joystick radius
+        if (Vector2.Distance(eventData.position, joystickOriginalPos) <= joystickRadius)
         {
             isDragging = true;
-            joystick.transform.position = Input.mousePosition;
-            joystickBG.transform.position = Input.mousePosition;
-            joystickTouchPos = Input.mousePosition;
+            joystickTouchPos = joystickOriginalPos;
         }
     }
 
-    public void Drag(BaseEventData baseEventData) 
+    public void OnDrag(PointerEventData eventData)
     {
         if (!isDragging) return;
 
-        PointerEventData pointerEventData = baseEventData as PointerEventData;
-        Vector2 dragPos = pointerEventData.position;
+        // Calculate the direction and position
+        Vector2 dragPos = eventData.position;
         joystickVec = (dragPos - joystickTouchPos).normalized;
 
-        float joystickDist = Vector2.Distance(dragPos, joystickTouchPos);
-
-        if (joystickDist < joystickRadius) 
+        float distance = Vector2.Distance(dragPos, joystickTouchPos);
+        if (distance < joystickRadius)
         {
-            // move joystick within the joystick bg
-            joystick.transform.position = joystickTouchPos + joystickVec * joystickDist;
-        } 
-        else 
+            joystick.transform.position = dragPos;
+        }
+        else
         {
-            // else only up to the radius of the bg
             joystick.transform.position = joystickTouchPos + joystickVec * joystickRadius;
         }
     }
 
-    public void PointerUp() 
+    public void OnPointerUp(PointerEventData eventData)
     {
-        isDragging = false;
-        joystickVec = Vector2.zero;
+        if (!isDragging) return;
+
+        // Reset joystick to the original position
         joystick.transform.position = joystickOriginalPos;
-        joystickBG.transform.position = joystickOriginalPos;
+        joystickVec = Vector2.zero;
+        isDragging = false;
     }
 }
-
