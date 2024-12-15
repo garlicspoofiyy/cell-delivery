@@ -66,11 +66,11 @@ public class PlayerMovementFightingGame : MonoBehaviour
         }
 
         // Flips the sprite according to the direction it is moving
-        if (movementInput.x < 0) 
+        if (movementInput.x < 0 || joystickMovement.joystickVec.x < 0) 
         {
             spriteRenderer.flipX = true;
         }
-        else if (movementInput.x > 0)
+        else if (movementInput.x > 0 || joystickMovement.joystickVec.x > 0)
         {
             spriteRenderer.flipX = false;
         }
