@@ -15,7 +15,7 @@ public class MenuController : MonoBehaviour
         }
     }
     void Start() {
-        Screen.orientation = ScreenOrientation.Portrait;
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
 
     public static void LoadMazeGame()
