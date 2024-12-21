@@ -47,6 +47,32 @@ public class RandomGameLoader : MonoBehaviour
         toBeDisabled.SetActive(false);
 
         // load the game
-        SceneManager.LoadScene(randomScene);
+        // if randomScene == "ShootingGame", load the ShootingGame scene
+        MenuController menuController = MenuController.menuController;
+        if (randomScene == "ShootingGame")
+        {
+            MenuController.LoadShootingGame();
+            return;
+        } else if (randomScene == "DodgingGame")
+        {
+            MenuController.LoadDodgingGame();
+            return;
+        } else if (randomScene == "StackingGame")
+        {
+            MenuController.LoadStackingGame();
+            return;
+        } else if (randomScene == "FightingGame")
+        {
+            MenuController.LoadFightingGame();
+            return;
+        } else if (randomScene == "Cell Delivery - Maze")
+        {
+            MenuController.LoadMazeGame();
+            return;
+        } else if (randomScene == "Cell Delivery - Sorting Game")
+        {
+            MenuController.LoadSortingGame();
+            return;
+        }
     }
 }

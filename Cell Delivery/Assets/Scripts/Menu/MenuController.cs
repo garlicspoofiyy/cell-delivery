@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
+    public static MenuController menuController;
     void Awake()
     {
         if (gameObject.name == "MinigameCanvas")
@@ -17,36 +18,42 @@ public class MenuController : MonoBehaviour
         Screen.orientation = ScreenOrientation.Portrait;
     }
 
-    public void LoadMazeGame()
+    public static void LoadMazeGame()
     {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         SceneManager.LoadScene("Cell Delivery - Maze");
     }
     
-    public void LoadSortingGame()
+    public static void LoadSortingGame()
     {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         SceneManager.LoadScene("Cell Delivery - Sorting Game");
     }
 
-    public void LoadFightingGame()
+    public static void LoadFightingGame()
     {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         SceneManager.LoadScene("FightingGame");
     }
 
-    public void LoadShootingGame()
+    public static void LoadShootingGame()
     {
+        //set portrait
+        Screen.orientation = ScreenOrientation.Portrait;
         SceneManager.LoadScene("ShootingGame");
     }
 
-    public void LoadStackingGame()
+    public static void LoadStackingGame()
     {
+         //set portrait
+        Screen.orientation = ScreenOrientation.Portrait;
         SceneManager.LoadScene("StackingGame");
     }
 
-    public void LoadDodgingGame()
+    public static void LoadDodgingGame()
     {
+        //set portrait
+        Screen.orientation = ScreenOrientation.Portrait;
         SceneManager.LoadScene("DodgingGame");
     }
 
